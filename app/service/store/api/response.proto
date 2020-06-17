@@ -1,0 +1,59 @@
+// 定义项目 API 的 proto 文件 可以同时描述 gRPC 和 HTTP API
+// protobuf 文件参考:
+//  - https://developers.google.com/protocol-buffers/
+syntax = "proto3";
+package business.service.store.v1;
+
+import "store/api/store.proto";
+option go_package = "v1";
+
+message StoreListRep{
+    repeated Store store = 1;
+    Page page = 2;
+}
+
+message StoreDetailRep{
+    Store offline_store = 1;
+}
+
+message FuzzySearchStoreRep{
+    repeated Store offline_store = 1;
+    Page page = 2;
+}
+
+message AddStoreRep{
+    int64 store_id = 1;
+}
+
+message EditStoreRep{
+    int64 store_id = 1;
+}
+
+message StoreAutoReplyRep{
+
+}
+
+message QueryStoreListByContactUserRep{
+    int64 store_id = 1;
+    string name = 2;
+}
+
+message DeleteStoreRep{
+
+}
+
+message AuthStoreRep{
+
+}
+
+message ChangeStoreStatusRep{
+
+}
+
+
+message Page{
+    int32 page = 1;
+    int32 page_size = 2;
+    int64 record_count = 3;
+}
+

@@ -1,0 +1,37 @@
+// 定义项目 API 的 proto 文件 可以同时描述 gRPC 和 HTTP API
+// protobuf 文件参考:
+//  - https://developers.google.com/protocol-buffers/
+syntax = "proto3";
+package business.service.store.v1;
+option go_package = "v1";
+
+message Store{
+    message TagList{
+        repeated string tag = 1;
+    }
+    message ImgList{
+        repeated string url = 1;
+    }
+
+    int64 store_id = 1;
+    string title = 2;
+    int64 type = 3;
+    int32 level = 4;
+    string cover = 5;
+    string province_name = 6;
+    string city_name = 7;
+    string area_name = 8;
+    int64 province_code = 9;
+    int64 city_code = 10;
+    int64 area_code = 11;
+    string address = 12;
+    string tel = 13;
+    string gcj_02 = 14;
+    string location = 15;
+    int64 district_id = 16;
+    string wechat = 17;
+    TagList tag_list = 18;
+    ImgList img_list = 19;
+    string distance = 20;
+}
+
