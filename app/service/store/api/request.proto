@@ -30,45 +30,14 @@ message FuzzySearchStoreReq{
     int32 page_size = 5;
 }
 
-message AddStoreReq{
-    int64 user_id = 1;
-    string title = 2;
-    int32 type = 3;
-    int32 level = 4;
-    string cover = 5;
-    string images = 6;
-    int64 belong_id = 7;
-    string brand_ids = 8;
-    string dealer_ids = 9;
-    string gaode_id = 10;
-    int64 province_code = 11;
-    int64 city_code = 12;
-    int64 area_code = 13;
-    int32 source = 14;
-    string tag_ids = 15;
-    string address = 16;
-    string tel = 17;
-    string gcj_02 = 18;
-    string location = 19;
-    int64 district_id = 20;
-    string wechat = 21;
-    int64 contact_admin_user_id = 22;
-    string introduction = 23;
-    string brand_names = 24;
-    string styles = 25;
-    string products = 26;
-    string price_descs = 27;
-    string business_time = 28;
-}
-
 message EditStoreReq{
-    int64 user_id = 1;
+    int64 Id = 1;
     string title = 2;
     int32 type = 3;
     int32 level = 4;
     string cover = 5;
     string images = 6;
-    int64 belong_id = 7;
+    string videos = 7;
     string brand_ids = 8;
     string dealer_ids = 9;
     string gaode_id = 10;
@@ -83,35 +52,15 @@ message EditStoreReq{
     string location = 19;
     int64 district_id = 20;
     string wechat = 21;
-    int64 contact_admin_user_id = 22;
     string introduction = 23;
     string brand_names = 24;
     string styles = 25;
     string products = 26;
     string price_descs = 27;
     string business_time = 28;
-    int64 id = 29;
-}
-
-message StoreAutoReplyReq{
-    int64 user_id = 1;
-    int64 store_id = 2;
-}
-
-message QueryStoreListByContactUserReq{
-    int64 contact_user_id = 1;
 }
 
 message DeleteStoreReq{
     int64 store_id = 1;
-}
-
-message AuthStoreReq{
-    int64 store_id = 1;
-}
-
-message ChangeStoreStatusReq{
-    int64 store_id = 1;
-    int32 status = 2;
 }
 

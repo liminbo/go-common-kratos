@@ -18,13 +18,9 @@ service StoreSrv {
   // 全文检索门店
   rpc FuzzySearchStore (FuzzySearchStoreReq) returns (FuzzySearchStoreRep);
   // 增加门店
-  rpc AddStore (AddStoreReq) returns (AddStoreRep);
+  rpc AddStore (EditStoreReq) returns (EditStoreRep);
   // 编辑门店
   rpc EditStore (EditStoreReq) returns (EditStoreRep);
-  // 门店联系人自动回复
-  rpc StoreAutoReply (StoreAutoReplyReq) returns (StoreAutoReplyRep);
-  // 根据门店联系人获取门店列表
-  rpc QueryStoreListByContactUser (QueryStoreListByContactUserReq) returns (QueryStoreListByContactUserRep);
   // 删除门店
   rpc DeleteStore (DeleteStoreReq) returns (DeleteStoreRep);
 }

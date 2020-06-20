@@ -19,14 +19,23 @@ func InitApp() (*App, func(), error) {
 	if err != nil {
 		return nil, nil, err
 	}
-	db, cleanup3, err := dao.NewDB()
+	db, cleanup2, err := dao.NewDB()
 	if err != nil {
 		cleanup()
 		return nil, nil, err
 	}
-	daoDao, cleanup4, err := dao.New(redis, db)
+
+	es, cleanup3, err := dao.NewES()
+	if err != nil {
+		cleanup2()
+		cleanup()
+		return nil, nil, err
+	}
+
+	daoDao, cleanup4, err := dao.New(redis, db, es)
 	if err != nil {
 		cleanup3()
+		cleanup2()
 		cleanup()
 		return nil, nil, err
 	}
@@ -34,6 +43,7 @@ func InitApp() (*App, func(), error) {
 	if err != nil {
 		cleanup4()
 		cleanup3()
+		cleanup2()
 		cleanup()
 		return nil, nil, err
 	}
@@ -42,6 +52,7 @@ func InitApp() (*App, func(), error) {
 		cleanup5()
 		cleanup4()
 		cleanup3()
+		cleanup2()
 		cleanup()
 		return nil, nil, err
 	}
@@ -50,6 +61,7 @@ func InitApp() (*App, func(), error) {
 		cleanup5()
 		cleanup4()
 		cleanup3()
+		cleanup2()
 		cleanup()
 		return nil, nil, err
 	}
@@ -58,6 +70,7 @@ func InitApp() (*App, func(), error) {
 		cleanup5()
 		cleanup4()
 		cleanup3()
+		cleanup2()
 		cleanup()
 		return nil, nil, err
 	}
@@ -66,6 +79,7 @@ func InitApp() (*App, func(), error) {
 		cleanup5()
 		cleanup4()
 		cleanup3()
+		cleanup2()
 		cleanup()
 	}, nil
 }

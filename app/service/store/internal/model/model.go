@@ -40,4 +40,16 @@ type StoreCover struct {
 	CoverInfo interface{}
 }
 
+type ImageParams struct {
+	Url string `json:"url"`
+	Title string `json:"title"`
+	Ext StoreResourceImageExt `json:"ext"`
+}
+
+type VideoParams struct {
+	Url string `json:"url"`
+	Title string `json:"title"`
+	Ext StoreResourceVideoExt `json:"ext"`
+}
+
 

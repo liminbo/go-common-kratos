@@ -18,6 +18,7 @@ import (
 	"github.com/go-kratos/kratos/pkg/log"
 	"go-common/app/service/store/internal/model"
 	v1 "go-common/app/service/store/api"
+	//"github.com/jinzhu/gorm"
 )
 
 func (d *dao) StoreEsSearchParams(ctx context.Context, req *v1.StoreListReq) (*model.StoreEsSearchParams, error) {
@@ -82,14 +83,14 @@ func (d *dao) DeleteStore(ctx context.Context, storeId int64) (err error) {
 	return
 }
 
-func (d *dao) AddStore(ctx context.Context, addReq *v1.AddStoreReq) (storeId int64, err error) {
+func (d *dao) AddStore(ctx context.Context, req *v1.EditStoreReq) (storeId int64, err error) {
 	storeCtx := &StoreCtx{
 		ctx:   ctx,
 		dao:   d,
-		addReq: addReq,
+		req: req,
 	}
 	nilHandle := new(StoreNilHandle)
-	nilHandle.setNext(&StoreAddHandle{}).setNext(&StoreAttrHandle{}).setNext(&StoreAddressHandle{}).setNext(&StoreAddResourceHandle{}).setNext(&StoreCountHandle{})
+	nilHandle.setNext(&StoreAddHandle{}).setNext(&StoreAttrHandle{}).setNext(&StoreAddressHandle{}).setNext(&StoreCountHandle{}).setNext(&StoreResourceHandle{}).setNext(&StoreBelongHandle{})
 	if err := nilHandle.Run(storeCtx); err !=nil{
 		log.Error("ERROR: %v", err)
 	}
@@ -103,7 +104,7 @@ func (d *dao) EditStore(ctx context.Context, req *v1.EditStoreReq) (err error){
 		req:   req,
 	}
 	nilHandle := new(StoreNilHandle)
-	nilHandle.setNext(&StoreEditHandle{}).setNext(&StoreAttrHandle{}).setNext(&StoreAddressHandle{}).setNext(&StoreEditResourceHandle{})
+	nilHandle.setNext(&StoreEditHandle{}).setNext(&StoreAttrHandle{}).setNext(&StoreAddressHandle{}).setNext(&StoreResourceHandle{}).setNext(&StoreBelongHandle{})
 	if err := nilHandle.Run(storeCtx); err !=nil{
 		log.Error("ERROR: %v", err)
 	}
@@ -217,15 +218,17 @@ func (d *dao) AddStoreBelone(ctx context.Context, storeId int64, belongType int8
 		BelongType: belongType,
 		BelongIds:  belongIds,
 	}
-	
 	if err = d.db.Create(belong).Error; err != nil{
 		log.Error("db error:%v", err)
 	}
 	return
 }
 
-func (d *dao) SetStoreCount(ctx context.Context, storeId int64, field, action string) error {
-	panic("implement me")
+func (d *dao) SetStoreCount(ctx context.Context, storeId int64, field string, count int) (err error) {
+	if err = d.db.Model(&model.StoreCount{}).Where("store_id=?", storeId).UpdateColumn(field, count).Error; err != nil{
+		log.Error("db error: %v", err)
+	}
+	return
 }
 
 func (d *dao) StoreEsSearch(ctx context.Context, searchParams *model.StoreEsSearchParams) (*model.StoreIdsByEsResult, error) {
@@ -236,10 +239,22 @@ func (d *dao) StoreFuzzySearch(ctx context.Context, req *v1.FuzzySearchStoreReq)
 	panic("implement me")
 }
 
+
 func (d *dao) StoreDistrictList(ctx context.Context, storeId int64) ([]*model.StoreDistrict, error) {
 	panic("implement me")
 }
 
-func (d *dao) DeleteStoreResource(ctx context.Context, storeId int64, resource model.StoreResourcer) error {
-	panic("implement me")
+
+func (d *dao) DeleteStoreResource(ctx context.Context, storeId int64) (err error) {
+	if err = d.db.Where("store_id=?", storeId).Delete(&model.StoreResource{}).Error; err != nil{
+		log.Error("db delete ERROR: %v", err)
+	}
+	return
+}
+
+func (d *dao) DeleteStoreBelong(ctx context.Context, storeId int64) (err error) {
+	if err = d.db.Where("store_id=?", storeId).Delete(&model.StoreBelong{}).Error; err != nil{
+		log.Error("db delete ERROR: %v", err)
+	}
+	return
 }

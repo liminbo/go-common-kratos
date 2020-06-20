@@ -73,15 +73,14 @@ func mygrpc(ctx *bm.Context) {
 	ctx.String(200, "1111")
 }
 func addStore(ctx *bm.Context) {
-	add := &v1.AddStoreReq{
-		UserId:               0,
+	add := &v1.EditStoreReq{
 		Title:                "3232323",
 		Type:                 1,
 		Cover:                "/prod/content/202006/13/836dfa/2306b7664efef14c756a641175b5fa7f.jpg",
-		Images:               "/prod/content/202006/13/836dfa/2306b7664efef14c756a641175b5fa7f.jpg",
-		//BelongId:             0,
-		//BrandIds:             "",
-		//DealerIds:            "",
+		Images:               `[{"url":"\/prod\/content\/202006\/13\/836dfa\/2306b7664efef14c756a641175b5fa7f.jpg","title":"图片1","ext":{"w":100,"h":200}},{"url":"\/prod\/content\/202006\/13\/836dfa\/2306b7664efef14c756a641175b5fa7f.jpg","title":"图片1","ext":{"w":100,"h":200}}]`,
+		Videos:               `[{"url":"\/prod\/content\/202006\/13\/836dfa\/2306b7664efef14c756a641175b5fa7f.mp4","title":"图片1","ext":{"mime":"mp4","w":100,"h":200,"cover":{"w":100,"h":200,"url":"\/prod\/content\/202006\/13\/836dfa\/2306b7664efef14c756a641175b5fa7f.jpg"}}},{"url":"\/prod\/content\/202006\/13\/836dfa\/2306b7664efef14c756a641175b5fa7f.mp4","title":"图片1","ext":{"mime":"mp4","w":100,"h":200,"cover":{"w":100,"h":200,"url":"\/prod\/content\/202006\/13\/836dfa\/2306b7664efef14c756a641175b5fa7f.jpg"}}}]`,
+		BrandIds:             "1,2",
+		DealerIds:            "3,4",
 		//GaodeId:              "",
 		ProvinceCode:         440000,
 		CityCode:             440100,
@@ -107,15 +106,32 @@ func addStore(ctx *bm.Context) {
 
 func editStore(ctx *bm.Context) {
 	edit := &v1.EditStoreReq{
-		Title: "updatebozi",
-		Type:1,
-		Level:25,
-		Cover:"338888",
-		Source:11,
-		Id:13,
-		Styles:"英伦风",
-		CityCode:11010,
-
+		Id:					  26,
+		Title:                "3232323编辑拉",
+		Type:                 1,
+		Cover:                "/prod/content/202006/13/836dfa/2306b7664efef14c756a641175b5fa7ftest.jpg",
+		Images:               `[{"url":"\/prod\/content\/202006\/13\/836dfa\/2306b7664efef14c756a641175b5fa7ftest.jpg","title":"图片1","ext":{"w":100,"h":200}},{"url":"\/prod\/content\/202006\/13\/836dfa\/2306b7664efef14c756a641175b5fa7f.jpg","title":"图片1","ext":{"w":100,"h":200}}]`,
+		Videos:               `[{"url":"\/prod\/content\/202006\/13\/836dfa\/2306b7664efef14c756a641175b5fa7ftest.mp4","title":"图片1","ext":{"mime":"mp4","w":100,"h":200,"cover":{"w":100,"h":200,"url":"\/prod\/content\/202006\/13\/836dfa\/2306b7664efef14c756a641175b5fa7f.jpg"}}},{"url":"\/prod\/content\/202006\/13\/836dfa\/2306b7664efef14c756a641175b5fa7f.mp4","title":"图片1","ext":{"mime":"mp4","w":100,"h":200,"cover":{"w":100,"h":200,"url":"\/prod\/content\/202006\/13\/836dfa\/2306b7664efef14c756a641175b5fa7f.jpg"}}}]`,
+		BrandIds:             "11,22",
+		DealerIds:            "33,44",
+		//GaodeId:              "",
+		ProvinceCode:         440000,
+		CityCode:             440100,
+		AreaCode:             440100,
+		//Source:               0,
+		//TagIds:               "",
+		Address:              "编辑广东省广州市海珠区昌岗街道",
+		Tel:                  "020-0312155",
+		//Gcj_02:               "",
+		Location:             "113.43,53.12",
+		//DistrictId:           0,
+		Wechat:               "wx_adfdfdf",
+		Introduction:         "门店描述",
+		BrandNames:           "品牌名字",
+		Styles:               "中国风",
+		Products:             "很多产品",
+		PriceDescs:           "价格丰简由人",
+		BusinessTime:         "每天都营业编辑",
 	}
 	_ = svr.EditStore(ctx, edit)
 	ctx.String(200, "edit success")

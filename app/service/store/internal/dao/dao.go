@@ -5,6 +5,7 @@ import (
 	"github.com/jinzhu/gorm"
 	v1 "go-common/app/service/store/api"
 	"go-common/app/service/store/internal/model"
+	"go-common/library/database/es"
 	"time"
 
 	"github.com/go-kratos/kratos/pkg/cache/redis"
@@ -41,7 +42,7 @@ type Dao interface {
 	OnlineStoreDetail(ctx context.Context, storeId int64) (*model.OnlineStore, error)
 
 	// 添加门店
-	AddStore(ctx context.Context, req *v1.AddStoreReq) (int64, error)
+	AddStore(ctx context.Context, req *v1.EditStoreReq) (int64, error)
 	// 编辑门店
 	EditStore(ctx context.Context, req *v1.EditStoreReq) error
 	// 删除门店
@@ -60,7 +61,7 @@ type Dao interface {
 	StoreResourceVideoList(ctx context.Context, storeId int64) (list []*model.StoreResourceVideo, err error)
 
 	// 设置门店统计
-	SetStoreCount(ctx context.Context, storeId int64, field,action string) error
+	SetStoreCount(ctx context.Context, storeId int64, field string, count int) error
 	// 获取门店统计
 	StoreCount(ctx context.Context, storeId int64) (*model.StoreCount, error)
 	AddStoreBelone(ctx context.Context, storeId int64, belongType int8, belongIds string) (err error)
@@ -75,16 +76,17 @@ type Dao interface {
 type dao struct {
 	db          *gorm.DB
 	redis       *redis.Redis
+	elasticSearch *es.ElasticSearch
 	cache *fanout.Fanout
 	demoExpire int32
 }
 
 // New new a dao and return.
-func New(r *redis.Redis, db *gorm.DB) (d Dao, cf func(), err error) {
-	return newDao(r, db)
+func New(r *redis.Redis, db *gorm.DB, elasticSearch *es.ElasticSearch) (d Dao, cf func(), err error) {
+	return newDao(r, db, elasticSearch)
 }
 
-func newDao(r *redis.Redis, db *gorm.DB) (d *dao, cf func(), err error) {
+func newDao(r *redis.Redis, db *gorm.DB, elasticSearch *es.ElasticSearch) (d *dao, cf func(), err error) {
 	var cfg struct{
 		DemoExpire xtime.Duration
 	}
@@ -94,6 +96,7 @@ func newDao(r *redis.Redis, db *gorm.DB) (d *dao, cf func(), err error) {
 	d = &dao{
 		db: db,
 		redis: r,
+		elasticSearch: elasticSearch,
 		cache: fanout.New("cache"),
 		demoExpire: int32(time.Duration(cfg.DemoExpire) / time.Second),
 	}

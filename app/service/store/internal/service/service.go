@@ -33,7 +33,7 @@ func (s *Service) Close() {
 
 }
 
-func (s *Service) AddStore(ctx context.Context, req *v1.AddStoreReq) (storeId int64, err error) {
+func (s *Service) AddStore(ctx context.Context, req *v1.EditStoreReq) (storeId int64, err error) {
 	storeId, err = s.dao.AddStore(ctx, req)
 	log.Info("result:%v", err)
 	return
@@ -105,6 +105,9 @@ func (s *Service) Test(ctx context.Context, storeId int64) (err error) {
 	//	log.Info("title is : %v", val.Title)
 	//}
 
+	// 测试修改count表
+	//err = s.dao.SetStoreCount(ctx, 19, "images", 10)
+	//log.Info("result:%v", err)
 
 	return
 }
