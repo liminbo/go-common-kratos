@@ -6,32 +6,115 @@ package business.service.store.v1;
 option go_package = "v1";
 
 message Store{
-    message TagList{
-        repeated string tag = 1;
-    }
-    message ImgList{
-        repeated string url = 1;
-    }
-
-    int64 store_id = 1;
+    int32 id = 1;
     string title = 2;
-    int64 type = 3;
+    int32 type = 3;
     int32 level = 4;
     string cover = 5;
+}
+
+message OfflineStore{
+    int32 id = 1;
+    string title = 2;
+    int32 type = 3;
+    int32 level = 4;
+    string cover = 5;
+
     string province_name = 6;
     string city_name = 7;
     string area_name = 8;
-    int64 province_code = 9;
-    int64 city_code = 10;
-    int64 area_code = 11;
+    int32 province_code = 9;
+    int32 city_code = 10;
+    int32 area_code = 11;
     string address = 12;
     string tel = 13;
     string gcj_02 = 14;
     string location = 15;
-    int64 district_id = 16;
+    int32 district_id = 16;
     string wechat = 17;
-    TagList tag_list = 18;
-    ImgList img_list = 19;
-    string distance = 20;
+
+    string reply = 18;
+    string remark = 19;
+    string styles = 20;
+    string introduction = 21;
+    string price_desc = 22;
+    string brand_desc = 23;
+    string products_desc = 24;
+    string business_time = 25;
+
+    int32 articles = 26;
+    int32 evaluations = 27;
+    int32 items = 28;
+    int32 real_clicks = 29;
+    int32 clicks = 30;
+    int32 images = 31;
+    int32 videoes = 32;
+    int32 created_at = 33;
+}
+
+message OnlineStore{
+    int32 id = 1;
+    string title = 2;
+    int32 type = 3;
+    int32 level = 4;
+    string cover = 5;
+
+    string province_name = 6;
+    string city_name = 7;
+    string area_name = 8;
+    int32 province_code = 9;
+    int32 city_code = 10;
+    int32 area_code = 11;
+    string address = 12;
+    string tel = 13;
+    string gcj_02 = 14;
+    string location = 15;
+    string wechat = 16;
+
+    string reply = 17;
+    string remark = 18;
+    string styles = 19;
+    string introduction = 20;
+    string price_desc = 21;
+    string brand_desc = 22;
+    string products_desc = 23;
+    string business_time = 24;
+
+    int32 articles = 25;
+    int32 evaluations = 26;
+    int32 items = 27;
+    int32 real_clicks = 28;
+    int32 clicks = 29;
+    int32 images = 30;
+    int32 videoes = 31;
+    int32 created_at = 32;
+}
+
+message ResourceImage{
+    message Ext{
+        int32 w = 1;
+        int32 h = 2;
+    }
+    string title = 1;
+    string data = 2;
+    Ext ext = 3;
+}
+
+message ResourceVideo{
+    message Cover{
+        int32 w = 1;
+        int32 h = 2;
+        string url = 3;
+    }
+    message Ext{
+        int32 w = 1;
+        int32 h = 2;
+        string mime = 3;
+        Cover cover = 4;
+
+    }
+    string title = 1;
+    string data = 2;
+    Ext ext = 3;
 }
 

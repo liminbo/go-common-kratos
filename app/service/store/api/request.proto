@@ -6,32 +6,31 @@ package business.service.store.v1;
 option go_package = "v1";
 
 message StoreListReq{
-    int64 dealer_id = 1; // 经销商id
-    int64 brand_id = 2; // 品牌id
-    int64 city_code = 3; // 城市代码
-    int64 district_id = 4; // 街区id
-    string location = 5; // 定位
-    int64 tag_id = 6; // 分类id
-    int32 order = 7; // 排序
-    int32 page = 8;
-    int32 page_size = 9;
+    int32 type = 1;
+    int32 dealer_id = 2; // 经销商id
+    int32 brand_id = 3; // 品牌id
+    int32 city_code = 4; // 城市代码
+    int32 district_id = 5; // 街区id
+    string location = 6; // 定位
+    int32 tag_id = 7; // 分类id
+    int32 order = 8; // 排序
+    int32 page = 9;
+    int32 page_size = 10;
 }
 
 message StoreDetailReq{
-    int64 store_id = 1;
-    string location = 2;
+    int32 store_id = 1;
 }
 
 message FuzzySearchStoreReq{
     string query = 1;
-    int32 isHighlight = 2;
-    int32 order = 3; // 排序
-    int32 page = 4;
-    int32 page_size = 5;
+    int32 order = 2; // 排序
+    int32 page = 3;
+    int32 page_size = 4;
 }
 
 message EditStoreReq{
-    int64 Id = 1;
+    int32 Id = 1;
     string title = 2;
     int32 type = 3;
     int32 level = 4;
@@ -41,16 +40,16 @@ message EditStoreReq{
     string brand_ids = 8;
     string dealer_ids = 9;
     string gaode_id = 10;
-    int64 province_code = 11;
-    int64 city_code = 12;
-    int64 area_code = 13;
+    int32 province_code = 11;
+    int32 city_code = 12;
+    int32 area_code = 13;
     int32 source = 14;
     string tag_ids = 15;
     string address = 16;
     string tel = 17;
     string gcj_02 = 18;
     string location = 19;
-    int64 district_id = 20;
+    int32 district_id = 20;
     string wechat = 21;
     string introduction = 23;
     string brand_names = 24;
@@ -61,6 +60,6 @@ message EditStoreReq{
 }
 
 message DeleteStoreReq{
-    int64 store_id = 1;
+    int32 store_id = 1;
 }
 

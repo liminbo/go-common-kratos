@@ -24,10 +24,10 @@ const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
 type StoreListRep struct {
 	Store                []*Store `protobuf:"bytes,1,rep,name=store,proto3" json:"store,omitempty"`
-	Page                 *Page        `protobuf:"bytes,2,opt,name=page,proto3" json:"page,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}     `json:"-"`
-	XXX_unrecognized     []byte       `json:"-"`
-	XXX_sizecache        int32        `json:"-"`
+	Page                 *Page    `protobuf:"bytes,2,opt,name=page,proto3" json:"page,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
 }
 
 func (m *StoreListRep) Reset()         { *m = StoreListRep{} }
@@ -77,25 +77,25 @@ func (m *StoreListRep) GetPage() *Page {
 	return nil
 }
 
-type StoreDetailRep struct {
-	OfflineStore         *Store `protobuf:"bytes,1,opt,name=offline_store,json=offlineStore,proto3" json:"offline_store,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}   `json:"-"`
-	XXX_unrecognized     []byte     `json:"-"`
-	XXX_sizecache        int32      `json:"-"`
+type OfflineStoreDetailRep struct {
+	OfflineStore         *OfflineStore `protobuf:"bytes,1,opt,name=offline_store,json=offlineStore,proto3" json:"offline_store,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}      `json:"-"`
+	XXX_unrecognized     []byte        `json:"-"`
+	XXX_sizecache        int32         `json:"-"`
 }
 
-func (m *StoreDetailRep) Reset()         { *m = StoreDetailRep{} }
-func (m *StoreDetailRep) String() string { return proto.CompactTextString(m) }
-func (*StoreDetailRep) ProtoMessage()    {}
-func (*StoreDetailRep) Descriptor() ([]byte, []int) {
+func (m *OfflineStoreDetailRep) Reset()         { *m = OfflineStoreDetailRep{} }
+func (m *OfflineStoreDetailRep) String() string { return proto.CompactTextString(m) }
+func (*OfflineStoreDetailRep) ProtoMessage()    {}
+func (*OfflineStoreDetailRep) Descriptor() ([]byte, []int) {
 	return fileDescriptor_0fbc901015fa5021, []int{1}
 }
-func (m *StoreDetailRep) XXX_Unmarshal(b []byte) error {
+func (m *OfflineStoreDetailRep) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
 }
-func (m *StoreDetailRep) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+func (m *OfflineStoreDetailRep) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	if deterministic {
-		return xxx_messageInfo_StoreDetailRep.Marshal(b, m, deterministic)
+		return xxx_messageInfo_OfflineStoreDetailRep.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
 		n, err := m.MarshalToSizedBuffer(b)
@@ -105,38 +105,85 @@ func (m *StoreDetailRep) XXX_Marshal(b []byte, deterministic bool) ([]byte, erro
 		return b[:n], nil
 	}
 }
-func (m *StoreDetailRep) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_StoreDetailRep.Merge(m, src)
+func (m *OfflineStoreDetailRep) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_OfflineStoreDetailRep.Merge(m, src)
 }
-func (m *StoreDetailRep) XXX_Size() int {
+func (m *OfflineStoreDetailRep) XXX_Size() int {
 	return m.Size()
 }
-func (m *StoreDetailRep) XXX_DiscardUnknown() {
-	xxx_messageInfo_StoreDetailRep.DiscardUnknown(m)
+func (m *OfflineStoreDetailRep) XXX_DiscardUnknown() {
+	xxx_messageInfo_OfflineStoreDetailRep.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_StoreDetailRep proto.InternalMessageInfo
+var xxx_messageInfo_OfflineStoreDetailRep proto.InternalMessageInfo
 
-func (m *StoreDetailRep) GetOfflineStore() *Store {
+func (m *OfflineStoreDetailRep) GetOfflineStore() *OfflineStore {
 	if m != nil {
 		return m.OfflineStore
 	}
 	return nil
 }
 
-type FuzzySearchStoreRep struct {
-	OfflineStore         []*Store `protobuf:"bytes,1,rep,name=offline_store,json=offlineStore,proto3" json:"offline_store,omitempty"`
-	Page                 *Page        `protobuf:"bytes,2,opt,name=page,proto3" json:"page,omitempty"`
+type OnlineStoreDetailRep struct {
+	OnlineStore          *OnlineStore `protobuf:"bytes,1,opt,name=online_store,json=onlineStore,proto3" json:"online_store,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}     `json:"-"`
 	XXX_unrecognized     []byte       `json:"-"`
 	XXX_sizecache        int32        `json:"-"`
+}
+
+func (m *OnlineStoreDetailRep) Reset()         { *m = OnlineStoreDetailRep{} }
+func (m *OnlineStoreDetailRep) String() string { return proto.CompactTextString(m) }
+func (*OnlineStoreDetailRep) ProtoMessage()    {}
+func (*OnlineStoreDetailRep) Descriptor() ([]byte, []int) {
+	return fileDescriptor_0fbc901015fa5021, []int{2}
+}
+func (m *OnlineStoreDetailRep) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *OnlineStoreDetailRep) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_OnlineStoreDetailRep.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *OnlineStoreDetailRep) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_OnlineStoreDetailRep.Merge(m, src)
+}
+func (m *OnlineStoreDetailRep) XXX_Size() int {
+	return m.Size()
+}
+func (m *OnlineStoreDetailRep) XXX_DiscardUnknown() {
+	xxx_messageInfo_OnlineStoreDetailRep.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_OnlineStoreDetailRep proto.InternalMessageInfo
+
+func (m *OnlineStoreDetailRep) GetOnlineStore() *OnlineStore {
+	if m != nil {
+		return m.OnlineStore
+	}
+	return nil
+}
+
+type FuzzySearchStoreRep struct {
+	Store                []*Store `protobuf:"bytes,1,rep,name=store,proto3" json:"store,omitempty"`
+	Page                 *Page    `protobuf:"bytes,2,opt,name=page,proto3" json:"page,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
 }
 
 func (m *FuzzySearchStoreRep) Reset()         { *m = FuzzySearchStoreRep{} }
 func (m *FuzzySearchStoreRep) String() string { return proto.CompactTextString(m) }
 func (*FuzzySearchStoreRep) ProtoMessage()    {}
 func (*FuzzySearchStoreRep) Descriptor() ([]byte, []int) {
-	return fileDescriptor_0fbc901015fa5021, []int{2}
+	return fileDescriptor_0fbc901015fa5021, []int{3}
 }
 func (m *FuzzySearchStoreRep) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -165,9 +212,9 @@ func (m *FuzzySearchStoreRep) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_FuzzySearchStoreRep proto.InternalMessageInfo
 
-func (m *FuzzySearchStoreRep) GetOfflineStore() []*Store {
+func (m *FuzzySearchStoreRep) GetStore() []*Store {
 	if m != nil {
-		return m.OfflineStore
+		return m.Store
 	}
 	return nil
 }
@@ -180,7 +227,7 @@ func (m *FuzzySearchStoreRep) GetPage() *Page {
 }
 
 type AddStoreRep struct {
-	StoreId              int64    `protobuf:"varint,1,opt,name=store_id,json=storeId,proto3" json:"store_id,omitempty"`
+	StoreId              int32    `protobuf:"varint,1,opt,name=store_id,json=storeId,proto3" json:"store_id,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -190,7 +237,7 @@ func (m *AddStoreRep) Reset()         { *m = AddStoreRep{} }
 func (m *AddStoreRep) String() string { return proto.CompactTextString(m) }
 func (*AddStoreRep) ProtoMessage()    {}
 func (*AddStoreRep) Descriptor() ([]byte, []int) {
-	return fileDescriptor_0fbc901015fa5021, []int{3}
+	return fileDescriptor_0fbc901015fa5021, []int{4}
 }
 func (m *AddStoreRep) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -219,7 +266,7 @@ func (m *AddStoreRep) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_AddStoreRep proto.InternalMessageInfo
 
-func (m *AddStoreRep) GetStoreId() int64 {
+func (m *AddStoreRep) GetStoreId() int32 {
 	if m != nil {
 		return m.StoreId
 	}
@@ -227,7 +274,6 @@ func (m *AddStoreRep) GetStoreId() int64 {
 }
 
 type EditStoreRep struct {
-	StoreId              int64    `protobuf:"varint,1,opt,name=store_id,json=storeId,proto3" json:"store_id,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -237,7 +283,7 @@ func (m *EditStoreRep) Reset()         { *m = EditStoreRep{} }
 func (m *EditStoreRep) String() string { return proto.CompactTextString(m) }
 func (*EditStoreRep) ProtoMessage()    {}
 func (*EditStoreRep) Descriptor() ([]byte, []int) {
-	return fileDescriptor_0fbc901015fa5021, []int{4}
+	return fileDescriptor_0fbc901015fa5021, []int{5}
 }
 func (m *EditStoreRep) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -266,107 +312,6 @@ func (m *EditStoreRep) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_EditStoreRep proto.InternalMessageInfo
 
-func (m *EditStoreRep) GetStoreId() int64 {
-	if m != nil {
-		return m.StoreId
-	}
-	return 0
-}
-
-type StoreAutoReplyRep struct {
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
-}
-
-func (m *StoreAutoReplyRep) Reset()         { *m = StoreAutoReplyRep{} }
-func (m *StoreAutoReplyRep) String() string { return proto.CompactTextString(m) }
-func (*StoreAutoReplyRep) ProtoMessage()    {}
-func (*StoreAutoReplyRep) Descriptor() ([]byte, []int) {
-	return fileDescriptor_0fbc901015fa5021, []int{5}
-}
-func (m *StoreAutoReplyRep) XXX_Unmarshal(b []byte) error {
-	return m.Unmarshal(b)
-}
-func (m *StoreAutoReplyRep) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	if deterministic {
-		return xxx_messageInfo_StoreAutoReplyRep.Marshal(b, m, deterministic)
-	} else {
-		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
-		if err != nil {
-			return nil, err
-		}
-		return b[:n], nil
-	}
-}
-func (m *StoreAutoReplyRep) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_StoreAutoReplyRep.Merge(m, src)
-}
-func (m *StoreAutoReplyRep) XXX_Size() int {
-	return m.Size()
-}
-func (m *StoreAutoReplyRep) XXX_DiscardUnknown() {
-	xxx_messageInfo_StoreAutoReplyRep.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_StoreAutoReplyRep proto.InternalMessageInfo
-
-type QueryStoreListByContactUserRep struct {
-	StoreId              int64    `protobuf:"varint,1,opt,name=store_id,json=storeId,proto3" json:"store_id,omitempty"`
-	Name                 string   `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
-}
-
-func (m *QueryStoreListByContactUserRep) Reset()         { *m = QueryStoreListByContactUserRep{} }
-func (m *QueryStoreListByContactUserRep) String() string { return proto.CompactTextString(m) }
-func (*QueryStoreListByContactUserRep) ProtoMessage()    {}
-func (*QueryStoreListByContactUserRep) Descriptor() ([]byte, []int) {
-	return fileDescriptor_0fbc901015fa5021, []int{6}
-}
-func (m *QueryStoreListByContactUserRep) XXX_Unmarshal(b []byte) error {
-	return m.Unmarshal(b)
-}
-func (m *QueryStoreListByContactUserRep) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	if deterministic {
-		return xxx_messageInfo_QueryStoreListByContactUserRep.Marshal(b, m, deterministic)
-	} else {
-		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
-		if err != nil {
-			return nil, err
-		}
-		return b[:n], nil
-	}
-}
-func (m *QueryStoreListByContactUserRep) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_QueryStoreListByContactUserRep.Merge(m, src)
-}
-func (m *QueryStoreListByContactUserRep) XXX_Size() int {
-	return m.Size()
-}
-func (m *QueryStoreListByContactUserRep) XXX_DiscardUnknown() {
-	xxx_messageInfo_QueryStoreListByContactUserRep.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_QueryStoreListByContactUserRep proto.InternalMessageInfo
-
-func (m *QueryStoreListByContactUserRep) GetStoreId() int64 {
-	if m != nil {
-		return m.StoreId
-	}
-	return 0
-}
-
-func (m *QueryStoreListByContactUserRep) GetName() string {
-	if m != nil {
-		return m.Name
-	}
-	return ""
-}
-
 type DeleteStoreRep struct {
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
@@ -377,7 +322,7 @@ func (m *DeleteStoreRep) Reset()         { *m = DeleteStoreRep{} }
 func (m *DeleteStoreRep) String() string { return proto.CompactTextString(m) }
 func (*DeleteStoreRep) ProtoMessage()    {}
 func (*DeleteStoreRep) Descriptor() ([]byte, []int) {
-	return fileDescriptor_0fbc901015fa5021, []int{7}
+	return fileDescriptor_0fbc901015fa5021, []int{6}
 }
 func (m *DeleteStoreRep) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -406,24 +351,72 @@ func (m *DeleteStoreRep) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_DeleteStoreRep proto.InternalMessageInfo
 
-type AuthStoreRep struct {
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
+type StoreImageListRep struct {
+	Image                []*ResourceImage `protobuf:"bytes,1,rep,name=image,proto3" json:"image,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}         `json:"-"`
+	XXX_unrecognized     []byte           `json:"-"`
+	XXX_sizecache        int32            `json:"-"`
 }
 
-func (m *AuthStoreRep) Reset()         { *m = AuthStoreRep{} }
-func (m *AuthStoreRep) String() string { return proto.CompactTextString(m) }
-func (*AuthStoreRep) ProtoMessage()    {}
-func (*AuthStoreRep) Descriptor() ([]byte, []int) {
+func (m *StoreImageListRep) Reset()         { *m = StoreImageListRep{} }
+func (m *StoreImageListRep) String() string { return proto.CompactTextString(m) }
+func (*StoreImageListRep) ProtoMessage()    {}
+func (*StoreImageListRep) Descriptor() ([]byte, []int) {
+	return fileDescriptor_0fbc901015fa5021, []int{7}
+}
+func (m *StoreImageListRep) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *StoreImageListRep) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_StoreImageListRep.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *StoreImageListRep) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_StoreImageListRep.Merge(m, src)
+}
+func (m *StoreImageListRep) XXX_Size() int {
+	return m.Size()
+}
+func (m *StoreImageListRep) XXX_DiscardUnknown() {
+	xxx_messageInfo_StoreImageListRep.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_StoreImageListRep proto.InternalMessageInfo
+
+func (m *StoreImageListRep) GetImage() []*ResourceImage {
+	if m != nil {
+		return m.Image
+	}
+	return nil
+}
+
+type StoreVideoListRep struct {
+	Video                []*ResourceVideo `protobuf:"bytes,1,rep,name=video,proto3" json:"video,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}         `json:"-"`
+	XXX_unrecognized     []byte           `json:"-"`
+	XXX_sizecache        int32            `json:"-"`
+}
+
+func (m *StoreVideoListRep) Reset()         { *m = StoreVideoListRep{} }
+func (m *StoreVideoListRep) String() string { return proto.CompactTextString(m) }
+func (*StoreVideoListRep) ProtoMessage()    {}
+func (*StoreVideoListRep) Descriptor() ([]byte, []int) {
 	return fileDescriptor_0fbc901015fa5021, []int{8}
 }
-func (m *AuthStoreRep) XXX_Unmarshal(b []byte) error {
+func (m *StoreVideoListRep) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
 }
-func (m *AuthStoreRep) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+func (m *StoreVideoListRep) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	if deterministic {
-		return xxx_messageInfo_AuthStoreRep.Marshal(b, m, deterministic)
+		return xxx_messageInfo_StoreVideoListRep.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
 		n, err := m.MarshalToSizedBuffer(b)
@@ -433,61 +426,29 @@ func (m *AuthStoreRep) XXX_Marshal(b []byte, deterministic bool) ([]byte, error)
 		return b[:n], nil
 	}
 }
-func (m *AuthStoreRep) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_AuthStoreRep.Merge(m, src)
+func (m *StoreVideoListRep) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_StoreVideoListRep.Merge(m, src)
 }
-func (m *AuthStoreRep) XXX_Size() int {
+func (m *StoreVideoListRep) XXX_Size() int {
 	return m.Size()
 }
-func (m *AuthStoreRep) XXX_DiscardUnknown() {
-	xxx_messageInfo_AuthStoreRep.DiscardUnknown(m)
+func (m *StoreVideoListRep) XXX_DiscardUnknown() {
+	xxx_messageInfo_StoreVideoListRep.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_AuthStoreRep proto.InternalMessageInfo
+var xxx_messageInfo_StoreVideoListRep proto.InternalMessageInfo
 
-type ChangeStoreStatusRep struct {
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
-}
-
-func (m *ChangeStoreStatusRep) Reset()         { *m = ChangeStoreStatusRep{} }
-func (m *ChangeStoreStatusRep) String() string { return proto.CompactTextString(m) }
-func (*ChangeStoreStatusRep) ProtoMessage()    {}
-func (*ChangeStoreStatusRep) Descriptor() ([]byte, []int) {
-	return fileDescriptor_0fbc901015fa5021, []int{9}
-}
-func (m *ChangeStoreStatusRep) XXX_Unmarshal(b []byte) error {
-	return m.Unmarshal(b)
-}
-func (m *ChangeStoreStatusRep) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	if deterministic {
-		return xxx_messageInfo_ChangeStoreStatusRep.Marshal(b, m, deterministic)
-	} else {
-		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
-		if err != nil {
-			return nil, err
-		}
-		return b[:n], nil
+func (m *StoreVideoListRep) GetVideo() []*ResourceVideo {
+	if m != nil {
+		return m.Video
 	}
+	return nil
 }
-func (m *ChangeStoreStatusRep) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_ChangeStoreStatusRep.Merge(m, src)
-}
-func (m *ChangeStoreStatusRep) XXX_Size() int {
-	return m.Size()
-}
-func (m *ChangeStoreStatusRep) XXX_DiscardUnknown() {
-	xxx_messageInfo_ChangeStoreStatusRep.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_ChangeStoreStatusRep proto.InternalMessageInfo
 
 type Page struct {
 	Page                 int32    `protobuf:"varint,1,opt,name=page,proto3" json:"page,omitempty"`
 	PageSize             int32    `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
-	RecordCount          int64    `protobuf:"varint,3,opt,name=record_count,json=recordCount,proto3" json:"record_count,omitempty"`
+	RecordCount          int32    `protobuf:"varint,3,opt,name=record_count,json=recordCount,proto3" json:"record_count,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -497,7 +458,7 @@ func (m *Page) Reset()         { *m = Page{} }
 func (m *Page) String() string { return proto.CompactTextString(m) }
 func (*Page) ProtoMessage()    {}
 func (*Page) Descriptor() ([]byte, []int) {
-	return fileDescriptor_0fbc901015fa5021, []int{10}
+	return fileDescriptor_0fbc901015fa5021, []int{9}
 }
 func (m *Page) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -540,7 +501,7 @@ func (m *Page) GetPageSize() int32 {
 	return 0
 }
 
-func (m *Page) GetRecordCount() int64 {
+func (m *Page) GetRecordCount() int32 {
 	if m != nil {
 		return m.RecordCount
 	}
@@ -549,48 +510,47 @@ func (m *Page) GetRecordCount() int64 {
 
 func init() {
 	proto.RegisterType((*StoreListRep)(nil), "business.service.store.v1.StoreListRep")
-	proto.RegisterType((*StoreDetailRep)(nil), "business.service.store.v1.StoreDetailRep")
+	proto.RegisterType((*OfflineStoreDetailRep)(nil), "business.service.store.v1.OfflineStoreDetailRep")
+	proto.RegisterType((*OnlineStoreDetailRep)(nil), "business.service.store.v1.OnlineStoreDetailRep")
 	proto.RegisterType((*FuzzySearchStoreRep)(nil), "business.service.store.v1.FuzzySearchStoreRep")
 	proto.RegisterType((*AddStoreRep)(nil), "business.service.store.v1.AddStoreRep")
 	proto.RegisterType((*EditStoreRep)(nil), "business.service.store.v1.EditStoreRep")
-	proto.RegisterType((*StoreAutoReplyRep)(nil), "business.service.store.v1.StoreAutoReplyRep")
-	proto.RegisterType((*QueryStoreListByContactUserRep)(nil), "business.service.store.v1.QueryStoreListByContactUserRep")
 	proto.RegisterType((*DeleteStoreRep)(nil), "business.service.store.v1.DeleteStoreRep")
-	proto.RegisterType((*AuthStoreRep)(nil), "business.service.store.v1.AuthStoreRep")
-	proto.RegisterType((*ChangeStoreStatusRep)(nil), "business.service.store.v1.ChangeStoreStatusRep")
+	proto.RegisterType((*StoreImageListRep)(nil), "business.service.store.v1.StoreImageListRep")
+	proto.RegisterType((*StoreVideoListRep)(nil), "business.service.store.v1.StoreVideoListRep")
 	proto.RegisterType((*Page)(nil), "business.service.store.v1.Page")
 }
 
 func init() { proto.RegisterFile("response.proto", fileDescriptor_0fbc901015fa5021) }
 
 var fileDescriptor_0fbc901015fa5021 = []byte{
-	// 410 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x9c, 0x52, 0xc1, 0x6e, 0xd3, 0x40,
-	0x10, 0xc5, 0x75, 0x02, 0xed, 0xd8, 0x58, 0xe0, 0x16, 0x94, 0x82, 0x64, 0xc2, 0x9e, 0xc2, 0xc5,
-	0x55, 0x5b, 0x89, 0x7b, 0x9a, 0x16, 0x09, 0x09, 0x09, 0x58, 0x0b, 0x21, 0xf5, 0x62, 0x6d, 0xed,
-	0x69, 0xb2, 0x92, 0xf1, 0x5a, 0xbb, 0xeb, 0x48, 0x36, 0x5f, 0xc1, 0x8d, 0x4f, 0xe2, 0xc8, 0x27,
-	0xa0, 0xf0, 0x23, 0x68, 0x77, 0x49, 0x4e, 0x10, 0x05, 0x4e, 0x9e, 0x79, 0x7e, 0xf3, 0xe6, 0xcd,
-	0xb3, 0x21, 0x92, 0xa8, 0x1a, 0x51, 0x2b, 0x4c, 0x1b, 0x29, 0xb4, 0x88, 0x8f, 0x6f, 0x5a, 0xc5,
-	0x6b, 0x54, 0x2a, 0x55, 0x28, 0x97, 0xbc, 0xc0, 0x54, 0x69, 0x21, 0x31, 0x5d, 0x9e, 0x3e, 0x79,
-	0x64, 0xab, 0x13, 0xd6, 0xf0, 0x13, 0x87, 0xd9, 0x09, 0xf2, 0x19, 0xc2, 0xcc, 0xb4, 0x6f, 0xb8,
-	0xd2, 0x14, 0x9b, 0xf8, 0x25, 0x0c, 0xed, 0xeb, 0x91, 0x37, 0xf6, 0x27, 0xc1, 0xd9, 0x38, 0xfd,
-	0xab, 0x62, 0x6a, 0xe7, 0xa8, 0xa3, 0xc7, 0xe7, 0x30, 0x68, 0xd8, 0x1c, 0x47, 0x7b, 0x63, 0x6f,
-	0x12, 0x9c, 0x3d, 0xdb, 0x32, 0xf6, 0x8e, 0xcd, 0x91, 0x5a, 0x32, 0xf9, 0x08, 0x91, 0x15, 0xb9,
-	0x44, 0xcd, 0x78, 0x65, 0xd6, 0x5f, 0xc1, 0x7d, 0x71, 0x7b, 0x5b, 0xf1, 0x1a, 0xf3, 0xb5, 0x0d,
-	0x6f, 0x27, 0x1b, 0xe1, 0xef, 0x31, 0xdb, 0x91, 0x2f, 0x1e, 0x1c, 0xbe, 0x6a, 0xfb, 0xbe, 0xcb,
-	0x90, 0xc9, 0x62, 0xe1, 0x28, 0x7f, 0x96, 0xf7, 0xff, 0x5d, 0xfe, 0xff, 0x8e, 0x9d, 0x40, 0x30,
-	0x2d, 0xcb, 0x8d, 0x95, 0x63, 0xd8, 0xb7, 0xac, 0x9c, 0x97, 0xf6, 0x48, 0x9f, 0xde, 0xb3, 0xfd,
-	0xeb, 0x92, 0xbc, 0x80, 0xf0, 0xaa, 0xe4, 0x7a, 0x17, 0xea, 0x21, 0x3c, 0xb4, 0xb4, 0x69, 0xab,
-	0x05, 0xc5, 0xa6, 0xea, 0x28, 0x36, 0xe4, 0x2d, 0x24, 0xef, 0x5b, 0x94, 0xdd, 0xe6, 0xc3, 0x5e,
-	0x74, 0x33, 0x51, 0x6b, 0x56, 0xe8, 0x0f, 0x0a, 0xe5, 0x76, 0xc5, 0x38, 0x86, 0x41, 0xcd, 0x3e,
-	0xb9, 0xdb, 0x0e, 0xa8, 0xad, 0xc9, 0x03, 0x88, 0x2e, 0xb1, 0x42, 0x8d, 0x6b, 0x4b, 0x24, 0x82,
-	0x70, 0xda, 0xea, 0x4d, 0xb0, 0xe4, 0x31, 0x1c, 0xcd, 0x16, 0xac, 0x9e, 0x3b, 0x46, 0xa6, 0x99,
-	0x6e, 0x95, 0xc1, 0xaf, 0x61, 0x60, 0x22, 0x30, 0xaa, 0x36, 0x31, 0xb3, 0x6c, 0xe8, 0x02, 0x89,
-	0x9f, 0xc2, 0x81, 0x79, 0xe6, 0x8a, 0xf7, 0x6e, 0xdd, 0x90, 0xee, 0x1b, 0x20, 0xe3, 0x3d, 0xc6,
-	0xcf, 0x21, 0x94, 0x58, 0x08, 0x59, 0xe6, 0x85, 0x68, 0x6b, 0x3d, 0xf2, 0xad, 0xcb, 0xc0, 0x61,
-	0x33, 0x03, 0x5d, 0x1c, 0x7d, 0x5b, 0x25, 0xde, 0xf7, 0x55, 0xe2, 0xfd, 0x58, 0x25, 0xde, 0xd7,
-	0x9f, 0xc9, 0x9d, 0xeb, 0xbd, 0xe5, 0xe9, 0xcd, 0x5d, 0xfb, 0x5f, 0x9f, 0xff, 0x0a, 0x00, 0x00,
-	0xff, 0xff, 0xc1, 0xad, 0x1a, 0xbd, 0x1b, 0x03, 0x00, 0x00,
+	// 401 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xbc, 0x53, 0xcd, 0x0a, 0xd3, 0x40,
+	0x10, 0x36, 0x6d, 0xa3, 0x75, 0x12, 0x8b, 0xc6, 0x0a, 0xad, 0x42, 0xac, 0x39, 0x68, 0x4e, 0x81,
+	0xb6, 0xe0, 0x51, 0x50, 0xab, 0x50, 0x28, 0x54, 0x36, 0xe0, 0xa1, 0x97, 0x90, 0x26, 0xd3, 0xba,
+	0x50, 0xb3, 0x61, 0x37, 0x09, 0x18, 0x6f, 0x3e, 0x85, 0x8f, 0xe4, 0xd1, 0x47, 0x90, 0xfa, 0x22,
+	0xb2, 0xbb, 0x6d, 0x5a, 0x50, 0x03, 0x5e, 0x3c, 0x65, 0xbe, 0x99, 0xef, 0xfb, 0xe6, 0x87, 0x2c,
+	0x0c, 0x38, 0x8a, 0x9c, 0x65, 0x02, 0x83, 0x9c, 0xb3, 0x82, 0x39, 0xe3, 0x6d, 0x29, 0x68, 0x86,
+	0x42, 0x04, 0x02, 0x79, 0x45, 0x13, 0x0c, 0x44, 0xc1, 0x38, 0x06, 0xd5, 0xf4, 0xa1, 0xa5, 0x23,
+	0xc5, 0xf3, 0x3e, 0x83, 0x1d, 0x4a, 0xb8, 0xa2, 0xa2, 0x20, 0x98, 0x3b, 0xcf, 0xc1, 0x54, 0xe5,
+	0x91, 0x31, 0xe9, 0xfa, 0xd6, 0x6c, 0x12, 0xfc, 0xd5, 0x27, 0x50, 0x3a, 0xa2, 0xe9, 0xce, 0x1c,
+	0x7a, 0x79, 0xbc, 0xc7, 0x51, 0x67, 0x62, 0xf8, 0xd6, 0xec, 0x71, 0x8b, 0xec, 0x5d, 0xbc, 0x47,
+	0xa2, 0xc8, 0x1e, 0xc2, 0x83, 0xf5, 0x6e, 0x77, 0xa0, 0x19, 0x2a, 0xaf, 0x05, 0x16, 0x31, 0x3d,
+	0xc8, 0x29, 0x56, 0x70, 0x87, 0xe9, 0x42, 0x74, 0x9e, 0x46, 0xda, 0x3e, 0x6b, 0xb1, 0xbd, 0x36,
+	0x22, 0x36, 0xbb, 0x42, 0x5e, 0x0c, 0xc3, 0x75, 0xf6, 0x87, 0x2e, 0x4b, 0xb0, 0x59, 0xf6, 0x5b,
+	0x93, 0xa7, 0x6d, 0x4d, 0x2e, 0x36, 0xc4, 0x62, 0x17, 0xe0, 0x7d, 0x31, 0xe0, 0xfe, 0xdb, 0xb2,
+	0xae, 0x3f, 0x85, 0x18, 0xf3, 0xe4, 0x83, 0x66, 0xfc, 0xef, 0x73, 0xfa, 0x60, 0xbd, 0x4c, 0xd3,
+	0xa6, 0xf7, 0x18, 0xfa, 0x8a, 0x15, 0xd1, 0x54, 0xad, 0x66, 0x92, 0x5b, 0x0a, 0x2f, 0x53, 0x6f,
+	0x00, 0xf6, 0x9b, 0x94, 0x16, 0x67, 0xaa, 0x77, 0x17, 0x06, 0x0b, 0x3c, 0x60, 0x81, 0x4d, 0x26,
+	0x84, 0x7b, 0x2a, 0x5e, 0x7e, 0x8c, 0xf7, 0xcd, 0xcf, 0xf1, 0x02, 0x4c, 0x2a, 0xf1, 0x69, 0x1b,
+	0xbf, 0x65, 0x2c, 0x82, 0x82, 0x95, 0x3c, 0xd1, 0x7a, 0xa2, 0x65, 0x8d, 0xe9, 0x7b, 0x9a, 0x22,
+	0xbb, 0x32, 0xad, 0x24, 0xfe, 0x07, 0x53, 0xa5, 0x27, 0x5a, 0xe6, 0x6d, 0xa0, 0x27, 0x6f, 0xe0,
+	0x38, 0xa7, 0x93, 0xe9, 0x55, 0x55, 0xec, 0x3c, 0x82, 0xdb, 0xf2, 0x1b, 0x09, 0x5a, 0xeb, 0x5b,
+	0x9a, 0xa4, 0x2f, 0x13, 0x21, 0xad, 0xd1, 0x79, 0x02, 0x36, 0xc7, 0x84, 0xf1, 0x34, 0x4a, 0x58,
+	0x99, 0x15, 0xa3, 0xae, 0xaa, 0x5b, 0x3a, 0xf7, 0x5a, 0xa6, 0x5e, 0x0d, 0xbf, 0x1d, 0x5d, 0xe3,
+	0xfb, 0xd1, 0x35, 0x7e, 0x1c, 0x5d, 0xe3, 0xeb, 0x4f, 0xf7, 0xc6, 0xa6, 0x53, 0x4d, 0xb7, 0x37,
+	0xd5, 0xd3, 0x99, 0xff, 0x0a, 0x00, 0x00, 0xff, 0xff, 0xd6, 0x87, 0x2b, 0xd3, 0x74, 0x03, 0x00,
+	0x00,
 }
 
 func (m *StoreListRep) Marshal() (dAtA []byte, err error) {
@@ -646,7 +606,7 @@ func (m *StoreListRep) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	return len(dAtA) - i, nil
 }
 
-func (m *StoreDetailRep) Marshal() (dAtA []byte, err error) {
+func (m *OfflineStoreDetailRep) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
 	n, err := m.MarshalToSizedBuffer(dAtA[:size])
@@ -656,12 +616,12 @@ func (m *StoreDetailRep) Marshal() (dAtA []byte, err error) {
 	return dAtA[:n], nil
 }
 
-func (m *StoreDetailRep) MarshalTo(dAtA []byte) (int, error) {
+func (m *OfflineStoreDetailRep) MarshalTo(dAtA []byte) (int, error) {
 	size := m.Size()
 	return m.MarshalToSizedBuffer(dAtA[:size])
 }
 
-func (m *StoreDetailRep) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+func (m *OfflineStoreDetailRep) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	i := len(dAtA)
 	_ = i
 	var l int
@@ -673,6 +633,45 @@ func (m *StoreDetailRep) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	if m.OfflineStore != nil {
 		{
 			size, err := m.OfflineStore.MarshalToSizedBuffer(dAtA[:i])
+			if err != nil {
+				return 0, err
+			}
+			i -= size
+			i = encodeVarintResponse(dAtA, i, uint64(size))
+		}
+		i--
+		dAtA[i] = 0xa
+	}
+	return len(dAtA) - i, nil
+}
+
+func (m *OnlineStoreDetailRep) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *OnlineStoreDetailRep) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *OnlineStoreDetailRep) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if m.XXX_unrecognized != nil {
+		i -= len(m.XXX_unrecognized)
+		copy(dAtA[i:], m.XXX_unrecognized)
+	}
+	if m.OnlineStore != nil {
+		{
+			size, err := m.OnlineStore.MarshalToSizedBuffer(dAtA[:i])
 			if err != nil {
 				return 0, err
 			}
@@ -721,10 +720,10 @@ func (m *FuzzySearchStoreRep) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 		i--
 		dAtA[i] = 0x12
 	}
-	if len(m.OfflineStore) > 0 {
-		for iNdEx := len(m.OfflineStore) - 1; iNdEx >= 0; iNdEx-- {
+	if len(m.Store) > 0 {
+		for iNdEx := len(m.Store) - 1; iNdEx >= 0; iNdEx-- {
 			{
-				size, err := m.OfflineStore[iNdEx].MarshalToSizedBuffer(dAtA[:i])
+				size, err := m.Store[iNdEx].MarshalToSizedBuffer(dAtA[:i])
 				if err != nil {
 					return 0, err
 				}
@@ -794,77 +793,6 @@ func (m *EditStoreRep) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 		i -= len(m.XXX_unrecognized)
 		copy(dAtA[i:], m.XXX_unrecognized)
 	}
-	if m.StoreId != 0 {
-		i = encodeVarintResponse(dAtA, i, uint64(m.StoreId))
-		i--
-		dAtA[i] = 0x8
-	}
-	return len(dAtA) - i, nil
-}
-
-func (m *StoreAutoReplyRep) Marshal() (dAtA []byte, err error) {
-	size := m.Size()
-	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
-	if err != nil {
-		return nil, err
-	}
-	return dAtA[:n], nil
-}
-
-func (m *StoreAutoReplyRep) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
-}
-
-func (m *StoreAutoReplyRep) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
-	_ = i
-	var l int
-	_ = l
-	if m.XXX_unrecognized != nil {
-		i -= len(m.XXX_unrecognized)
-		copy(dAtA[i:], m.XXX_unrecognized)
-	}
-	return len(dAtA) - i, nil
-}
-
-func (m *QueryStoreListByContactUserRep) Marshal() (dAtA []byte, err error) {
-	size := m.Size()
-	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
-	if err != nil {
-		return nil, err
-	}
-	return dAtA[:n], nil
-}
-
-func (m *QueryStoreListByContactUserRep) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
-}
-
-func (m *QueryStoreListByContactUserRep) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
-	_ = i
-	var l int
-	_ = l
-	if m.XXX_unrecognized != nil {
-		i -= len(m.XXX_unrecognized)
-		copy(dAtA[i:], m.XXX_unrecognized)
-	}
-	if len(m.Name) > 0 {
-		i -= len(m.Name)
-		copy(dAtA[i:], m.Name)
-		i = encodeVarintResponse(dAtA, i, uint64(len(m.Name)))
-		i--
-		dAtA[i] = 0x12
-	}
-	if m.StoreId != 0 {
-		i = encodeVarintResponse(dAtA, i, uint64(m.StoreId))
-		i--
-		dAtA[i] = 0x8
-	}
 	return len(dAtA) - i, nil
 }
 
@@ -895,7 +823,7 @@ func (m *DeleteStoreRep) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	return len(dAtA) - i, nil
 }
 
-func (m *AuthStoreRep) Marshal() (dAtA []byte, err error) {
+func (m *StoreImageListRep) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
 	n, err := m.MarshalToSizedBuffer(dAtA[:size])
@@ -905,12 +833,12 @@ func (m *AuthStoreRep) Marshal() (dAtA []byte, err error) {
 	return dAtA[:n], nil
 }
 
-func (m *AuthStoreRep) MarshalTo(dAtA []byte) (int, error) {
+func (m *StoreImageListRep) MarshalTo(dAtA []byte) (int, error) {
 	size := m.Size()
 	return m.MarshalToSizedBuffer(dAtA[:size])
 }
 
-func (m *AuthStoreRep) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+func (m *StoreImageListRep) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	i := len(dAtA)
 	_ = i
 	var l int
@@ -918,11 +846,25 @@ func (m *AuthStoreRep) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	if m.XXX_unrecognized != nil {
 		i -= len(m.XXX_unrecognized)
 		copy(dAtA[i:], m.XXX_unrecognized)
+	}
+	if len(m.Image) > 0 {
+		for iNdEx := len(m.Image) - 1; iNdEx >= 0; iNdEx-- {
+			{
+				size, err := m.Image[iNdEx].MarshalToSizedBuffer(dAtA[:i])
+				if err != nil {
+					return 0, err
+				}
+				i -= size
+				i = encodeVarintResponse(dAtA, i, uint64(size))
+			}
+			i--
+			dAtA[i] = 0xa
+		}
 	}
 	return len(dAtA) - i, nil
 }
 
-func (m *ChangeStoreStatusRep) Marshal() (dAtA []byte, err error) {
+func (m *StoreVideoListRep) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
 	n, err := m.MarshalToSizedBuffer(dAtA[:size])
@@ -932,12 +874,12 @@ func (m *ChangeStoreStatusRep) Marshal() (dAtA []byte, err error) {
 	return dAtA[:n], nil
 }
 
-func (m *ChangeStoreStatusRep) MarshalTo(dAtA []byte) (int, error) {
+func (m *StoreVideoListRep) MarshalTo(dAtA []byte) (int, error) {
 	size := m.Size()
 	return m.MarshalToSizedBuffer(dAtA[:size])
 }
 
-func (m *ChangeStoreStatusRep) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+func (m *StoreVideoListRep) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	i := len(dAtA)
 	_ = i
 	var l int
@@ -945,6 +887,20 @@ func (m *ChangeStoreStatusRep) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	if m.XXX_unrecognized != nil {
 		i -= len(m.XXX_unrecognized)
 		copy(dAtA[i:], m.XXX_unrecognized)
+	}
+	if len(m.Video) > 0 {
+		for iNdEx := len(m.Video) - 1; iNdEx >= 0; iNdEx-- {
+			{
+				size, err := m.Video[iNdEx].MarshalToSizedBuffer(dAtA[:i])
+				if err != nil {
+					return 0, err
+				}
+				i -= size
+				i = encodeVarintResponse(dAtA, i, uint64(size))
+			}
+			i--
+			dAtA[i] = 0xa
+		}
 	}
 	return len(dAtA) - i, nil
 }
@@ -1024,7 +980,7 @@ func (m *StoreListRep) Size() (n int) {
 	return n
 }
 
-func (m *StoreDetailRep) Size() (n int) {
+func (m *OfflineStoreDetailRep) Size() (n int) {
 	if m == nil {
 		return 0
 	}
@@ -1040,14 +996,30 @@ func (m *StoreDetailRep) Size() (n int) {
 	return n
 }
 
+func (m *OnlineStoreDetailRep) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	if m.OnlineStore != nil {
+		l = m.OnlineStore.Size()
+		n += 1 + l + sovResponse(uint64(l))
+	}
+	if m.XXX_unrecognized != nil {
+		n += len(m.XXX_unrecognized)
+	}
+	return n
+}
+
 func (m *FuzzySearchStoreRep) Size() (n int) {
 	if m == nil {
 		return 0
 	}
 	var l int
 	_ = l
-	if len(m.OfflineStore) > 0 {
-		for _, e := range m.OfflineStore {
+	if len(m.Store) > 0 {
+		for _, e := range m.Store {
 			l = e.Size()
 			n += 1 + l + sovResponse(uint64(l))
 		}
@@ -1083,40 +1055,6 @@ func (m *EditStoreRep) Size() (n int) {
 	}
 	var l int
 	_ = l
-	if m.StoreId != 0 {
-		n += 1 + sovResponse(uint64(m.StoreId))
-	}
-	if m.XXX_unrecognized != nil {
-		n += len(m.XXX_unrecognized)
-	}
-	return n
-}
-
-func (m *StoreAutoReplyRep) Size() (n int) {
-	if m == nil {
-		return 0
-	}
-	var l int
-	_ = l
-	if m.XXX_unrecognized != nil {
-		n += len(m.XXX_unrecognized)
-	}
-	return n
-}
-
-func (m *QueryStoreListByContactUserRep) Size() (n int) {
-	if m == nil {
-		return 0
-	}
-	var l int
-	_ = l
-	if m.StoreId != 0 {
-		n += 1 + sovResponse(uint64(m.StoreId))
-	}
-	l = len(m.Name)
-	if l > 0 {
-		n += 1 + l + sovResponse(uint64(l))
-	}
 	if m.XXX_unrecognized != nil {
 		n += len(m.XXX_unrecognized)
 	}
@@ -1135,24 +1073,36 @@ func (m *DeleteStoreRep) Size() (n int) {
 	return n
 }
 
-func (m *AuthStoreRep) Size() (n int) {
+func (m *StoreImageListRep) Size() (n int) {
 	if m == nil {
 		return 0
 	}
 	var l int
 	_ = l
+	if len(m.Image) > 0 {
+		for _, e := range m.Image {
+			l = e.Size()
+			n += 1 + l + sovResponse(uint64(l))
+		}
+	}
 	if m.XXX_unrecognized != nil {
 		n += len(m.XXX_unrecognized)
 	}
 	return n
 }
 
-func (m *ChangeStoreStatusRep) Size() (n int) {
+func (m *StoreVideoListRep) Size() (n int) {
 	if m == nil {
 		return 0
 	}
 	var l int
 	_ = l
+	if len(m.Video) > 0 {
+		for _, e := range m.Video {
+			l = e.Size()
+			n += 1 + l + sovResponse(uint64(l))
+		}
+	}
 	if m.XXX_unrecognized != nil {
 		n += len(m.XXX_unrecognized)
 	}
@@ -1310,7 +1260,7 @@ func (m *StoreListRep) Unmarshal(dAtA []byte) error {
 	}
 	return nil
 }
-func (m *StoreDetailRep) Unmarshal(dAtA []byte) error {
+func (m *OfflineStoreDetailRep) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
 	for iNdEx < l {
@@ -1333,10 +1283,10 @@ func (m *StoreDetailRep) Unmarshal(dAtA []byte) error {
 		fieldNum := int32(wire >> 3)
 		wireType := int(wire & 0x7)
 		if wireType == 4 {
-			return fmt.Errorf("proto: StoreDetailRep: wiretype end group for non-group")
+			return fmt.Errorf("proto: OfflineStoreDetailRep: wiretype end group for non-group")
 		}
 		if fieldNum <= 0 {
-			return fmt.Errorf("proto: StoreDetailRep: illegal tag %d (wire type %d)", fieldNum, wire)
+			return fmt.Errorf("proto: OfflineStoreDetailRep: illegal tag %d (wire type %d)", fieldNum, wire)
 		}
 		switch fieldNum {
 		case 1:
@@ -1369,9 +1319,99 @@ func (m *StoreDetailRep) Unmarshal(dAtA []byte) error {
 				return io.ErrUnexpectedEOF
 			}
 			if m.OfflineStore == nil {
-				m.OfflineStore = &Store{}
+				m.OfflineStore = &OfflineStore{}
 			}
 			if err := m.OfflineStore.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+				return err
+			}
+			iNdEx = postIndex
+		default:
+			iNdEx = preIndex
+			skippy, err := skipResponse(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if skippy < 0 {
+				return ErrInvalidLengthResponse
+			}
+			if (iNdEx + skippy) < 0 {
+				return ErrInvalidLengthResponse
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.XXX_unrecognized = append(m.XXX_unrecognized, dAtA[iNdEx:iNdEx+skippy]...)
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *OnlineStoreDetailRep) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowResponse
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: OnlineStoreDetailRep: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: OnlineStoreDetailRep: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field OnlineStore", wireType)
+			}
+			var msglen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowResponse
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				msglen |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if msglen < 0 {
+				return ErrInvalidLengthResponse
+			}
+			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthResponse
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			if m.OnlineStore == nil {
+				m.OnlineStore = &OnlineStore{}
+			}
+			if err := m.OnlineStore.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
 				return err
 			}
 			iNdEx = postIndex
@@ -1431,7 +1471,7 @@ func (m *FuzzySearchStoreRep) Unmarshal(dAtA []byte) error {
 		switch fieldNum {
 		case 1:
 			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field OfflineStore", wireType)
+				return fmt.Errorf("proto: wrong wireType = %d for field Store", wireType)
 			}
 			var msglen int
 			for shift := uint(0); ; shift += 7 {
@@ -1458,8 +1498,8 @@ func (m *FuzzySearchStoreRep) Unmarshal(dAtA []byte) error {
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
-			m.OfflineStore = append(m.OfflineStore, &Store{})
-			if err := m.OfflineStore[len(m.OfflineStore)-1].Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+			m.Store = append(m.Store, &Store{})
+			if err := m.Store[len(m.Store)-1].Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
 				return err
 			}
 			iNdEx = postIndex
@@ -1567,7 +1607,7 @@ func (m *AddStoreRep) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				m.StoreId |= int64(b&0x7F) << shift
+				m.StoreId |= int32(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -1626,184 +1666,6 @@ func (m *EditStoreRep) Unmarshal(dAtA []byte) error {
 			return fmt.Errorf("proto: EditStoreRep: illegal tag %d (wire type %d)", fieldNum, wire)
 		}
 		switch fieldNum {
-		case 1:
-			if wireType != 0 {
-				return fmt.Errorf("proto: wrong wireType = %d for field StoreId", wireType)
-			}
-			m.StoreId = 0
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowResponse
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				m.StoreId |= int64(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-		default:
-			iNdEx = preIndex
-			skippy, err := skipResponse(dAtA[iNdEx:])
-			if err != nil {
-				return err
-			}
-			if skippy < 0 {
-				return ErrInvalidLengthResponse
-			}
-			if (iNdEx + skippy) < 0 {
-				return ErrInvalidLengthResponse
-			}
-			if (iNdEx + skippy) > l {
-				return io.ErrUnexpectedEOF
-			}
-			m.XXX_unrecognized = append(m.XXX_unrecognized, dAtA[iNdEx:iNdEx+skippy]...)
-			iNdEx += skippy
-		}
-	}
-
-	if iNdEx > l {
-		return io.ErrUnexpectedEOF
-	}
-	return nil
-}
-func (m *StoreAutoReplyRep) Unmarshal(dAtA []byte) error {
-	l := len(dAtA)
-	iNdEx := 0
-	for iNdEx < l {
-		preIndex := iNdEx
-		var wire uint64
-		for shift := uint(0); ; shift += 7 {
-			if shift >= 64 {
-				return ErrIntOverflowResponse
-			}
-			if iNdEx >= l {
-				return io.ErrUnexpectedEOF
-			}
-			b := dAtA[iNdEx]
-			iNdEx++
-			wire |= uint64(b&0x7F) << shift
-			if b < 0x80 {
-				break
-			}
-		}
-		fieldNum := int32(wire >> 3)
-		wireType := int(wire & 0x7)
-		if wireType == 4 {
-			return fmt.Errorf("proto: StoreAutoReplyRep: wiretype end group for non-group")
-		}
-		if fieldNum <= 0 {
-			return fmt.Errorf("proto: StoreAutoReplyRep: illegal tag %d (wire type %d)", fieldNum, wire)
-		}
-		switch fieldNum {
-		default:
-			iNdEx = preIndex
-			skippy, err := skipResponse(dAtA[iNdEx:])
-			if err != nil {
-				return err
-			}
-			if skippy < 0 {
-				return ErrInvalidLengthResponse
-			}
-			if (iNdEx + skippy) < 0 {
-				return ErrInvalidLengthResponse
-			}
-			if (iNdEx + skippy) > l {
-				return io.ErrUnexpectedEOF
-			}
-			m.XXX_unrecognized = append(m.XXX_unrecognized, dAtA[iNdEx:iNdEx+skippy]...)
-			iNdEx += skippy
-		}
-	}
-
-	if iNdEx > l {
-		return io.ErrUnexpectedEOF
-	}
-	return nil
-}
-func (m *QueryStoreListByContactUserRep) Unmarshal(dAtA []byte) error {
-	l := len(dAtA)
-	iNdEx := 0
-	for iNdEx < l {
-		preIndex := iNdEx
-		var wire uint64
-		for shift := uint(0); ; shift += 7 {
-			if shift >= 64 {
-				return ErrIntOverflowResponse
-			}
-			if iNdEx >= l {
-				return io.ErrUnexpectedEOF
-			}
-			b := dAtA[iNdEx]
-			iNdEx++
-			wire |= uint64(b&0x7F) << shift
-			if b < 0x80 {
-				break
-			}
-		}
-		fieldNum := int32(wire >> 3)
-		wireType := int(wire & 0x7)
-		if wireType == 4 {
-			return fmt.Errorf("proto: QueryStoreListByContactUserRep: wiretype end group for non-group")
-		}
-		if fieldNum <= 0 {
-			return fmt.Errorf("proto: QueryStoreListByContactUserRep: illegal tag %d (wire type %d)", fieldNum, wire)
-		}
-		switch fieldNum {
-		case 1:
-			if wireType != 0 {
-				return fmt.Errorf("proto: wrong wireType = %d for field StoreId", wireType)
-			}
-			m.StoreId = 0
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowResponse
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				m.StoreId |= int64(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-		case 2:
-			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field Name", wireType)
-			}
-			var stringLen uint64
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowResponse
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				stringLen |= uint64(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			intStringLen := int(stringLen)
-			if intStringLen < 0 {
-				return ErrInvalidLengthResponse
-			}
-			postIndex := iNdEx + intStringLen
-			if postIndex < 0 {
-				return ErrInvalidLengthResponse
-			}
-			if postIndex > l {
-				return io.ErrUnexpectedEOF
-			}
-			m.Name = string(dAtA[iNdEx:postIndex])
-			iNdEx = postIndex
 		default:
 			iNdEx = preIndex
 			skippy, err := skipResponse(dAtA[iNdEx:])
@@ -1883,7 +1745,7 @@ func (m *DeleteStoreRep) Unmarshal(dAtA []byte) error {
 	}
 	return nil
 }
-func (m *AuthStoreRep) Unmarshal(dAtA []byte) error {
+func (m *StoreImageListRep) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
 	for iNdEx < l {
@@ -1906,12 +1768,46 @@ func (m *AuthStoreRep) Unmarshal(dAtA []byte) error {
 		fieldNum := int32(wire >> 3)
 		wireType := int(wire & 0x7)
 		if wireType == 4 {
-			return fmt.Errorf("proto: AuthStoreRep: wiretype end group for non-group")
+			return fmt.Errorf("proto: StoreImageListRep: wiretype end group for non-group")
 		}
 		if fieldNum <= 0 {
-			return fmt.Errorf("proto: AuthStoreRep: illegal tag %d (wire type %d)", fieldNum, wire)
+			return fmt.Errorf("proto: StoreImageListRep: illegal tag %d (wire type %d)", fieldNum, wire)
 		}
 		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Image", wireType)
+			}
+			var msglen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowResponse
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				msglen |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if msglen < 0 {
+				return ErrInvalidLengthResponse
+			}
+			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthResponse
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Image = append(m.Image, &ResourceImage{})
+			if err := m.Image[len(m.Image)-1].Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+				return err
+			}
+			iNdEx = postIndex
 		default:
 			iNdEx = preIndex
 			skippy, err := skipResponse(dAtA[iNdEx:])
@@ -1937,7 +1833,7 @@ func (m *AuthStoreRep) Unmarshal(dAtA []byte) error {
 	}
 	return nil
 }
-func (m *ChangeStoreStatusRep) Unmarshal(dAtA []byte) error {
+func (m *StoreVideoListRep) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
 	for iNdEx < l {
@@ -1960,12 +1856,46 @@ func (m *ChangeStoreStatusRep) Unmarshal(dAtA []byte) error {
 		fieldNum := int32(wire >> 3)
 		wireType := int(wire & 0x7)
 		if wireType == 4 {
-			return fmt.Errorf("proto: ChangeStoreStatusRep: wiretype end group for non-group")
+			return fmt.Errorf("proto: StoreVideoListRep: wiretype end group for non-group")
 		}
 		if fieldNum <= 0 {
-			return fmt.Errorf("proto: ChangeStoreStatusRep: illegal tag %d (wire type %d)", fieldNum, wire)
+			return fmt.Errorf("proto: StoreVideoListRep: illegal tag %d (wire type %d)", fieldNum, wire)
 		}
 		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Video", wireType)
+			}
+			var msglen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowResponse
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				msglen |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if msglen < 0 {
+				return ErrInvalidLengthResponse
+			}
+			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthResponse
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Video = append(m.Video, &ResourceVideo{})
+			if err := m.Video[len(m.Video)-1].Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+				return err
+			}
+			iNdEx = postIndex
 		default:
 			iNdEx = preIndex
 			skippy, err := skipResponse(dAtA[iNdEx:])
@@ -2072,7 +2002,7 @@ func (m *Page) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				m.RecordCount |= int64(b&0x7F) << shift
+				m.RecordCount |= int32(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}

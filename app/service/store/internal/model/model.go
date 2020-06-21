@@ -1,36 +1,34 @@
 package model
 
 type Pagination struct {
-	RecordCount int64
-	PageCount int64
-	Current int64
-	PageSize int64
+	RecordCount int
+	PageCount int
+	Current int
+	PageSize int
 }
 
 type Location struct {
-	Lat string
-	Lon string
+	Lat float64
+	Lon float64
 }
 
 type StoreIdsByEsResult struct {
 	pagination *Pagination
-	StoreIds []int64
+	StoreIds []int
 }
 
 type StoreEsSearchParams struct {
-	Order int8
-	Type int8
-	Keywords string
-	BrandId int64
-	DealerId int64
+	Order string
+	Type int
+	BrandId int
+	DealerId int
 	Tag string
-	Source int8
+	Source int
 	City string
-	InsertStoreIds string
-	AreaCode int64
 	Distance string
-	DistrictLocations []*Location
 	Location *Location
+	Page int
+	PageSize int
 }
 
 type StoreCover struct {

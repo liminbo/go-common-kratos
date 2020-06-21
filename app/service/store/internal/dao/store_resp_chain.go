@@ -13,7 +13,7 @@ import (
 // 上下文
 type StoreCtx struct {
 	ctx context.Context
-	storeId int64
+	storeId int
 	dao *dao
 	req *v1.EditStoreReq
 }
@@ -94,10 +94,10 @@ func (a *StoreAddHandle) Do(ctx *StoreCtx) (err error){
 
 	store := &model.Store{
 		Title:        req.Title,
-		Type:         req.Type,
-		Level:        req.Level,
+		Type:         int(req.Type),
+		Level:        int(req.Level),
 		Cover:        req.Cover,
-		Source:       req.Source,
+		Source:       int(req.Source),
 		TagIds:       req.TagIds,
 	}
 	if err = ctx.dao.db.Create(store).Error; err != nil{
@@ -111,7 +111,7 @@ func (a *StoreAddHandle) Do(ctx *StoreCtx) (err error){
 func (c *StoreResourceHandle) Do(ctx *StoreCtx) (err error){
 
 	var(
-		id int64
+		id int
 		images []model.ImageParams
 		videos []model.VideoParams
 		imageCount int = 0
@@ -214,9 +214,9 @@ func (a *StoreAddressHandle) Do(ctx *StoreCtx) (err error){
 					ProvinceName: "",
 					CityName:     "",
 					AreaName:     "",
-					ProvinceCode: req.ProvinceCode,
-					CityCode:     req.CityCode,
-					AreaCode:     req.AreaCode,
+					ProvinceCode: int(req.ProvinceCode),
+					CityCode:     int(req.CityCode),
+					AreaCode:     int(req.AreaCode),
 					Address:      req.Address,
 					Gcj02:        req.Gcj_02,
 					GaodeId:      req.GaodeId,
@@ -233,9 +233,9 @@ func (a *StoreAddressHandle) Do(ctx *StoreCtx) (err error){
 					ProvinceName: "",
 					CityName:     "",
 					AreaName:     "",
-					ProvinceCode: req.ProvinceCode,
-					CityCode:     req.CityCode,
-					AreaCode:     req.AreaCode,
+					ProvinceCode: int(req.ProvinceCode),
+					CityCode:     int(req.CityCode),
+					AreaCode:     int(req.AreaCode),
 					Address:      req.Address,
 					Gcj02:        req.Gcj_02,
 					GaodeId:      req.GaodeId,
@@ -284,12 +284,12 @@ func (c *StoreBelongHandle) Do(ctx *StoreCtx) (err error){
 func (c *StoreEditHandle) Do(ctx *StoreCtx) (err error){
 	req := ctx.req
 	store := &model.Store{
-		ID:req.Id,
+		ID:           int(req.Id),
 		Title:        req.Title,
-		Type:         req.Type,
-		Level:        req.Level,
+		Type:         int(req.Type),
+		Level:        int(req.Level),
 		Cover:        req.Cover,
-		Source:       req.Source,
+		Source:       int(req.Source),
 		TagIds:       req.TagIds,
 	}
 	if err = ctx.dao.db.Save(store).Error; err != nil{

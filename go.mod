@@ -7,6 +7,6 @@ require (
 	github.com/golang/protobuf v1.3.5
 	github.com/google/wire v0.4.0
 	github.com/jinzhu/gorm v1.9.12
-	github.com/olivere/elastic/v7 v7.0.17 // indirect
 	google.golang.org/grpc v1.29.1
+	gopkg.in/olivere/elastic.v5 v5.0.85
 )

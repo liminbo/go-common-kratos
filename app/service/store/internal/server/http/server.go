@@ -38,6 +38,7 @@ func initRouter(e *bm.Engine) {
 	e.GET("/editstore", editStore)
 	e.GET("/test", test)
 	e.GET("/detail", storeDetail)
+	e.GET("/list", list)
 }
 
 func ping(ctx *bm.Context) {
@@ -64,7 +65,7 @@ func mygrpc(ctx *bm.Context) {
 	//if err != nil{
 	//	data = "23"
 	//}else{
-	//	storeId := int64(0)
+	//	storeId := int(0)
 	//	for _, val := range rep.OfflineStore {
 	//		storeId = val.StoreId
 	//	}
@@ -101,7 +102,7 @@ func addStore(ctx *bm.Context) {
 		BusinessTime:         "每天都营业",
 	}
 	storeId,_ := svr.AddStore(ctx, add)
-	ctx.String(200, "add success storeId:"+strconv.FormatInt(storeId, 10))
+	ctx.String(200, "add success storeId:"+strconv.Itoa(int(storeId)))
 }
 
 func editStore(ctx *bm.Context) {
@@ -143,8 +144,14 @@ func storeDetail(ctx *bm.Context) {
 }
 
 func test(ctx *bm.Context) {
-	storeId,_ := strconv.ParseInt(ctx.Request.Form.Get("store_id"), 10, 64)
-	_ = svr.Test(ctx, storeId)
+	storeId,_ := strconv.ParseInt(ctx.Request.Form.Get("store_id"), 10, 32)
+	_ = svr.Test(ctx, int(storeId))
 	ctx.String(200, "test success")
+}
+
+func list(ctx *bm.Context) {
+	//_ = svr.OfflineStoreList(ctx)
+	_ = svr.StoreFuzzySearch(ctx)
+	ctx.String(200, "FuzzySearch success")
 }
 

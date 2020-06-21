@@ -12,7 +12,7 @@ type OfflineStore struct {
 
 type OfflineStoreAddress struct {
 	CommonStoreAddress
-	DistrictId int64 // 商区id
+	DistrictId int // 商区id
 }
 
 type OfflineStoreAttr struct {

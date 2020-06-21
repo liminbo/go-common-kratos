@@ -4,7 +4,7 @@
 syntax = "proto3";
 package business.service.store.v1;
 
-import "store/api/store.proto";
+import "store.proto";
 option go_package = "v1";
 
 message StoreListRep{
@@ -12,48 +12,40 @@ message StoreListRep{
     Page page = 2;
 }
 
-message StoreDetailRep{
-    Store offline_store = 1;
+message OfflineStoreDetailRep{
+    OfflineStore offline_store = 1;
+}
+
+message OnlineStoreDetailRep{
+    OnlineStore online_store = 1;
 }
 
 message FuzzySearchStoreRep{
-    repeated Store offline_store = 1;
+    repeated Store store = 1;
     Page page = 2;
 }
 
 message AddStoreRep{
-    int64 store_id = 1;
+    int32 store_id = 1;
 }
 
 message EditStoreRep{
-    int64 store_id = 1;
-}
-
-message StoreAutoReplyRep{
-
-}
-
-message QueryStoreListByContactUserRep{
-    int64 store_id = 1;
-    string name = 2;
 }
 
 message DeleteStoreRep{
 
 }
 
-message AuthStoreRep{
-
+message StoreImageListRep{
+    repeated ResourceImage image = 1;
 }
-
-message ChangeStoreStatusRep{
-
+message StoreVideoListRep{
+    repeated ResourceVideo video = 1;
 }
-
 
 message Page{
     int32 page = 1;
     int32 page_size = 2;
-    int64 record_count = 3;
+    int32 record_count = 3;
 }
 

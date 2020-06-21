@@ -17,15 +17,15 @@ type StoreResourcer interface {
 
 // 资源
 type StoreResource struct{
-	Id int64 // 资源id
-	StoreId int64 // 门店id
-	Type int32 // 资源类型
+	Id int // 资源id
+	StoreId int // 门店id
+	Type int // 资源类型
 	Title string //
 	Data string // 资源数据
 	DataInfo string // 资源信息
-	Displayorder int64 // 排序
-	CreatedAt int64
-	UpdatedAt int64
+	Displayorder int // 排序
+	CreatedAt int
+	UpdatedAt int
 }
 
 // 图片
@@ -34,8 +34,8 @@ type StoreResourceImage struct{
 	StoreResourceImageExt
 }
 type StoreResourceImageExt struct{
-	W int64 `json:"w"`
-	H int64 `json:"h"`
+	W int `json:"w"`
+	H int `json:"h"`
 }
 
 // 视频
@@ -45,14 +45,14 @@ type StoreResourceVideo struct{
 }
 type StoreResourceVideoExt struct{
 	Mime string `json:"mime"`
-	W int64 `json:"w"`
-	H int64 `json:"h"`
+	W int `json:"w"`
+	H int `json:"h"`
 	Cover StoreResourceVideoExtCover `json:"cover"`
 }
 
 type StoreResourceVideoExtCover struct {
-	W int64 `json:"w"`
-	H int64 `json:"h"`
+	W int `json:"w"`
+	H int `json:"h"`
 	Url string `json:"url"`
 }
 

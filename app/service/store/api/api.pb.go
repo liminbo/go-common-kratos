@@ -27,24 +27,27 @@ const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 func init() { proto.RegisterFile("api.proto", fileDescriptor_00212fb1f9d3bf1c) }
 
 var fileDescriptor_00212fb1f9d3bf1c = []byte{
-	// 259 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xe2, 0xe2, 0x4c, 0x2c, 0xc8, 0xd4,
-	0x2b, 0x28, 0xca, 0x2f, 0xc9, 0x17, 0x92, 0x4c, 0x2a, 0x2d, 0xce, 0xcc, 0x4b, 0x2d, 0x2e, 0xd6,
-	0x2b, 0x4e, 0x2d, 0x2a, 0xcb, 0x4c, 0x4e, 0xd5, 0x2b, 0x2e, 0xc9, 0x2f, 0x4a, 0xd5, 0x2b, 0x33,
-	0x94, 0x12, 0x07, 0xb3, 0xf4, 0x13, 0x0b, 0x32, 0xf5, 0x8b, 0x52, 0x0b, 0x4b, 0x53, 0x8b, 0x4b,
-	0x20, 0x7a, 0xa4, 0x24, 0x90, 0x25, 0x8a, 0x0b, 0xf2, 0xf3, 0x8a, 0x53, 0x21, 0x32, 0x46, 0x4f,
-	0x58, 0xb8, 0x38, 0x82, 0x41, 0x92, 0xc1, 0x45, 0x65, 0x42, 0xb1, 0x5c, 0x9c, 0x60, 0xb6, 0x4f,
-	0x66, 0x71, 0x89, 0x90, 0xba, 0x1e, 0x4e, 0x8b, 0xf4, 0xe0, 0xaa, 0x82, 0x52, 0x0b, 0xa5, 0x88,
-	0x54, 0x58, 0x20, 0x94, 0xcc, 0xc5, 0x0d, 0xe6, 0xbb, 0xa4, 0x96, 0x24, 0x66, 0xe6, 0x08, 0x69,
-	0x12, 0xd2, 0x07, 0x51, 0x07, 0xb2, 0x82, 0x68, 0xa5, 0x05, 0x42, 0x45, 0x5c, 0x02, 0x6e, 0xa5,
-	0x55, 0x55, 0x95, 0xc1, 0xa9, 0x89, 0x45, 0xc9, 0x19, 0x60, 0x49, 0x21, 0x3d, 0x3c, 0xda, 0xd1,
-	0x15, 0x83, 0xac, 0x23, 0x4d, 0x7d, 0x81, 0x50, 0x0c, 0x17, 0x87, 0x63, 0x4a, 0x0a, 0xc4, 0x2e,
-	0x7c, 0xa1, 0xe1, 0x9a, 0x92, 0x59, 0x02, 0xb7, 0x84, 0x48, 0x85, 0x05, 0xa0, 0x58, 0x81, 0xf3,
-	0x69, 0x60, 0x7c, 0x32, 0x17, 0xb7, 0x4b, 0x6a, 0x4e, 0x6a, 0x49, 0x2a, 0xc4, 0x02, 0x7c, 0x41,
-	0x8d, 0xa4, 0x8e, 0x50, 0xac, 0xa0, 0x28, 0x2d, 0x70, 0x12, 0x39, 0xf1, 0x48, 0x8e, 0xf1, 0xc2,
-	0x23, 0x39, 0xc6, 0x07, 0x8f, 0xe4, 0x18, 0x67, 0x3c, 0x96, 0x63, 0x88, 0x62, 0x2a, 0x33, 0x4c,
-	0x62, 0x03, 0xa7, 0x41, 0x63, 0x40, 0x00, 0x00, 0x00, 0xff, 0xff, 0x64, 0x8a, 0xe3, 0xfa, 0xde,
-	0x02, 0x00, 0x00,
+	// 317 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xac, 0x93, 0xcf, 0x4a, 0xc3, 0x30,
+	0x1c, 0x80, 0xad, 0x07, 0x5d, 0x23, 0x0e, 0x0d, 0x5e, 0xec, 0xa1, 0x47, 0x45, 0x90, 0xe8, 0xf4,
+	0x09, 0x94, 0x29, 0x08, 0xc2, 0x60, 0x05, 0x0f, 0xca, 0x0e, 0x5d, 0xfb, 0x9b, 0x06, 0x6a, 0x93,
+	0x26, 0x69, 0xc1, 0x3d, 0x89, 0x8f, 0xe2, 0x23, 0x78, 0xf4, 0x11, 0xa4, 0xbe, 0x88, 0xa4, 0xc1,
+	0x30, 0xfc, 0x93, 0x75, 0xb8, 0x5b, 0xda, 0x7e, 0xf9, 0x3e, 0x68, 0x7e, 0x41, 0x7e, 0xcc, 0x29,
+	0xe1, 0x82, 0x29, 0x86, 0x77, 0xc7, 0xa5, 0xa4, 0x39, 0x48, 0x49, 0x24, 0x88, 0x8a, 0x26, 0x40,
+	0xa4, 0x62, 0x02, 0x48, 0xd5, 0x0b, 0x36, 0x05, 0x14, 0x25, 0x48, 0x65, 0xc8, 0xa0, 0x2b, 0x40,
+	0x72, 0x96, 0x4b, 0x30, 0xcf, 0x27, 0x2f, 0xeb, 0xa8, 0x13, 0x69, 0x36, 0x12, 0x15, 0x1e, 0x21,
+	0xbf, 0x59, 0x5f, 0x53, 0xa9, 0xf0, 0x3e, 0xf9, 0x53, 0x4a, 0x2c, 0x35, 0x84, 0x22, 0x68, 0x09,
+	0x72, 0x5c, 0x20, 0x3c, 0x98, 0x4c, 0x32, 0x9a, 0x43, 0xf3, 0xba, 0x0f, 0x2a, 0xa6, 0x19, 0x3e,
+	0x98, 0xb7, 0xdd, 0x70, 0xba, 0x74, 0xec, 0x40, 0x7f, 0x9a, 0x75, 0x92, 0xa1, 0xed, 0x41, 0xfe,
+	0x8f, 0xe2, 0x91, 0xab, 0x98, 0xff, 0x12, 0x14, 0x68, 0xeb, 0xb2, 0x9c, 0x4e, 0x9f, 0x22, 0x88,
+	0x45, 0xf2, 0xd0, 0x7c, 0xc4, 0xc4, 0x21, 0xf9, 0x0e, 0xeb, 0xe8, 0x62, 0x3c, 0xc7, 0x77, 0xa8,
+	0x73, 0x96, 0xa6, 0xa6, 0xe5, 0x3a, 0x8c, 0x8b, 0x94, 0x2a, 0x1b, 0xd9, 0x73, 0x80, 0x5f, 0x36,
+	0x2d, 0x1f, 0x21, 0xdf, 0xee, 0x6b, 0x6f, 0x6f, 0x09, 0x72, 0x9c, 0xa0, 0x8d, 0x3e, 0x64, 0xa0,
+	0xcc, 0x7f, 0x74, 0x1e, 0xcd, 0x0c, 0xa7, 0x13, 0xad, 0x51, 0x8e, 0x29, 0xea, 0x36, 0xeb, 0xab,
+	0xc7, 0xf8, 0xde, 0x0c, 0xf7, 0x02, 0x23, 0x70, 0x38, 0x0f, 0xb5, 0xd6, 0xd9, 0xd4, 0x0d, 0x4d,
+	0x81, 0x2d, 0x3d, 0x65, 0xad, 0x43, 0xe0, 0xe7, 0x3b, 0xaf, 0x75, 0xe8, 0xbd, 0xd5, 0xa1, 0xf7,
+	0x5e, 0x87, 0xde, 0xf3, 0x47, 0xb8, 0x72, 0xbb, 0x5a, 0xf5, 0xc6, 0x6b, 0xcd, 0xbd, 0x3e, 0xfd,
+	0x0c, 0x00, 0x00, 0xff, 0xff, 0x3c, 0x97, 0x7e, 0x88, 0x1e, 0x04, 0x00, 0x00,
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -62,15 +65,21 @@ type StoreSrvClient interface {
 	// 线下门店列表
 	StoreList(ctx context.Context, in *StoreListReq, opts ...grpc.CallOption) (*StoreListRep, error)
 	// 线下门店详情
-	StoreDetail(ctx context.Context, in *StoreDetailReq, opts ...grpc.CallOption) (*StoreDetailRep, error)
+	OfflineStoreDetail(ctx context.Context, in *StoreDetailReq, opts ...grpc.CallOption) (*OfflineStoreDetailRep, error)
+	// 线下门店详情
+	OnlineStoreDetail(ctx context.Context, in *StoreDetailReq, opts ...grpc.CallOption) (*OnlineStoreDetailRep, error)
 	// 全文检索门店
 	FuzzySearchStore(ctx context.Context, in *FuzzySearchStoreReq, opts ...grpc.CallOption) (*FuzzySearchStoreRep, error)
 	// 增加门店
-	AddStore(ctx context.Context, in *EditStoreReq, opts ...grpc.CallOption) (*EditStoreRep, error)
+	AddStore(ctx context.Context, in *EditStoreReq, opts ...grpc.CallOption) (*AddStoreRep, error)
 	// 编辑门店
 	EditStore(ctx context.Context, in *EditStoreReq, opts ...grpc.CallOption) (*EditStoreRep, error)
 	// 删除门店
 	DeleteStore(ctx context.Context, in *DeleteStoreReq, opts ...grpc.CallOption) (*DeleteStoreRep, error)
+	// 门店图片列表
+	StoreImageList(ctx context.Context, in *StoreDetailReq, opts ...grpc.CallOption) (*StoreImageListRep, error)
+	// 门店视频列表
+	StoreVideoList(ctx context.Context, in *StoreDetailReq, opts ...grpc.CallOption) (*StoreVideoListRep, error)
 }
 
 type storeSrvClient struct {
@@ -90,9 +99,18 @@ func (c *storeSrvClient) StoreList(ctx context.Context, in *StoreListReq, opts .
 	return out, nil
 }
 
-func (c *storeSrvClient) StoreDetail(ctx context.Context, in *StoreDetailReq, opts ...grpc.CallOption) (*StoreDetailRep, error) {
-	out := new(StoreDetailRep)
-	err := c.cc.Invoke(ctx, "/business.service.store.v1.StoreSrv/StoreDetail", in, out, opts...)
+func (c *storeSrvClient) OfflineStoreDetail(ctx context.Context, in *StoreDetailReq, opts ...grpc.CallOption) (*OfflineStoreDetailRep, error) {
+	out := new(OfflineStoreDetailRep)
+	err := c.cc.Invoke(ctx, "/business.service.store.v1.StoreSrv/OfflineStoreDetail", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *storeSrvClient) OnlineStoreDetail(ctx context.Context, in *StoreDetailReq, opts ...grpc.CallOption) (*OnlineStoreDetailRep, error) {
+	out := new(OnlineStoreDetailRep)
+	err := c.cc.Invoke(ctx, "/business.service.store.v1.StoreSrv/OnlineStoreDetail", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -108,8 +126,8 @@ func (c *storeSrvClient) FuzzySearchStore(ctx context.Context, in *FuzzySearchSt
 	return out, nil
 }
 
-func (c *storeSrvClient) AddStore(ctx context.Context, in *EditStoreReq, opts ...grpc.CallOption) (*EditStoreRep, error) {
-	out := new(EditStoreRep)
+func (c *storeSrvClient) AddStore(ctx context.Context, in *EditStoreReq, opts ...grpc.CallOption) (*AddStoreRep, error) {
+	out := new(AddStoreRep)
 	err := c.cc.Invoke(ctx, "/business.service.store.v1.StoreSrv/AddStore", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -135,20 +153,44 @@ func (c *storeSrvClient) DeleteStore(ctx context.Context, in *DeleteStoreReq, op
 	return out, nil
 }
 
+func (c *storeSrvClient) StoreImageList(ctx context.Context, in *StoreDetailReq, opts ...grpc.CallOption) (*StoreImageListRep, error) {
+	out := new(StoreImageListRep)
+	err := c.cc.Invoke(ctx, "/business.service.store.v1.StoreSrv/StoreImageList", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *storeSrvClient) StoreVideoList(ctx context.Context, in *StoreDetailReq, opts ...grpc.CallOption) (*StoreVideoListRep, error) {
+	out := new(StoreVideoListRep)
+	err := c.cc.Invoke(ctx, "/business.service.store.v1.StoreSrv/StoreVideoList", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // StoreSrvServer is the server API for StoreSrv service.
 type StoreSrvServer interface {
 	// 线下门店列表
 	StoreList(context.Context, *StoreListReq) (*StoreListRep, error)
 	// 线下门店详情
-	StoreDetail(context.Context, *StoreDetailReq) (*StoreDetailRep, error)
+	OfflineStoreDetail(context.Context, *StoreDetailReq) (*OfflineStoreDetailRep, error)
+	// 线下门店详情
+	OnlineStoreDetail(context.Context, *StoreDetailReq) (*OnlineStoreDetailRep, error)
 	// 全文检索门店
 	FuzzySearchStore(context.Context, *FuzzySearchStoreReq) (*FuzzySearchStoreRep, error)
 	// 增加门店
-	AddStore(context.Context, *EditStoreReq) (*EditStoreRep, error)
+	AddStore(context.Context, *EditStoreReq) (*AddStoreRep, error)
 	// 编辑门店
 	EditStore(context.Context, *EditStoreReq) (*EditStoreRep, error)
 	// 删除门店
 	DeleteStore(context.Context, *DeleteStoreReq) (*DeleteStoreRep, error)
+	// 门店图片列表
+	StoreImageList(context.Context, *StoreDetailReq) (*StoreImageListRep, error)
+	// 门店视频列表
+	StoreVideoList(context.Context, *StoreDetailReq) (*StoreVideoListRep, error)
 }
 
 // UnimplementedStoreSrvServer can be embedded to have forward compatible implementations.
@@ -158,13 +200,16 @@ type UnimplementedStoreSrvServer struct {
 func (*UnimplementedStoreSrvServer) StoreList(ctx context.Context, req *StoreListReq) (*StoreListRep, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method StoreList not implemented")
 }
-func (*UnimplementedStoreSrvServer) StoreDetail(ctx context.Context, req *StoreDetailReq) (*StoreDetailRep, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method StoreDetail not implemented")
+func (*UnimplementedStoreSrvServer) OfflineStoreDetail(ctx context.Context, req *StoreDetailReq) (*OfflineStoreDetailRep, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method OfflineStoreDetail not implemented")
+}
+func (*UnimplementedStoreSrvServer) OnlineStoreDetail(ctx context.Context, req *StoreDetailReq) (*OnlineStoreDetailRep, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method OnlineStoreDetail not implemented")
 }
 func (*UnimplementedStoreSrvServer) FuzzySearchStore(ctx context.Context, req *FuzzySearchStoreReq) (*FuzzySearchStoreRep, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method FuzzySearchStore not implemented")
 }
-func (*UnimplementedStoreSrvServer) AddStore(ctx context.Context, req *EditStoreReq) (*EditStoreRep, error) {
+func (*UnimplementedStoreSrvServer) AddStore(ctx context.Context, req *EditStoreReq) (*AddStoreRep, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method AddStore not implemented")
 }
 func (*UnimplementedStoreSrvServer) EditStore(ctx context.Context, req *EditStoreReq) (*EditStoreRep, error) {
@@ -172,6 +217,12 @@ func (*UnimplementedStoreSrvServer) EditStore(ctx context.Context, req *EditStor
 }
 func (*UnimplementedStoreSrvServer) DeleteStore(ctx context.Context, req *DeleteStoreReq) (*DeleteStoreRep, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteStore not implemented")
+}
+func (*UnimplementedStoreSrvServer) StoreImageList(ctx context.Context, req *StoreDetailReq) (*StoreImageListRep, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method StoreImageList not implemented")
+}
+func (*UnimplementedStoreSrvServer) StoreVideoList(ctx context.Context, req *StoreDetailReq) (*StoreVideoListRep, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method StoreVideoList not implemented")
 }
 
 func RegisterStoreSrvServer(s *grpc.Server, srv StoreSrvServer) {
@@ -196,20 +247,38 @@ func _StoreSrv_StoreList_Handler(srv interface{}, ctx context.Context, dec func(
 	return interceptor(ctx, in, info, handler)
 }
 
-func _StoreSrv_StoreDetail_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _StoreSrv_OfflineStoreDetail_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(StoreDetailReq)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(StoreSrvServer).StoreDetail(ctx, in)
+		return srv.(StoreSrvServer).OfflineStoreDetail(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/business.service.store.v1.StoreSrv/StoreDetail",
+		FullMethod: "/business.service.store.v1.StoreSrv/OfflineStoreDetail",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(StoreSrvServer).StoreDetail(ctx, req.(*StoreDetailReq))
+		return srv.(StoreSrvServer).OfflineStoreDetail(ctx, req.(*StoreDetailReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _StoreSrv_OnlineStoreDetail_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(StoreDetailReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(StoreSrvServer).OnlineStoreDetail(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/business.service.store.v1.StoreSrv/OnlineStoreDetail",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(StoreSrvServer).OnlineStoreDetail(ctx, req.(*StoreDetailReq))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -286,6 +355,42 @@ func _StoreSrv_DeleteStore_Handler(srv interface{}, ctx context.Context, dec fun
 	return interceptor(ctx, in, info, handler)
 }
 
+func _StoreSrv_StoreImageList_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(StoreDetailReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(StoreSrvServer).StoreImageList(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/business.service.store.v1.StoreSrv/StoreImageList",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(StoreSrvServer).StoreImageList(ctx, req.(*StoreDetailReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _StoreSrv_StoreVideoList_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(StoreDetailReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(StoreSrvServer).StoreVideoList(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/business.service.store.v1.StoreSrv/StoreVideoList",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(StoreSrvServer).StoreVideoList(ctx, req.(*StoreDetailReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 var _StoreSrv_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "business.service.store.v1.StoreSrv",
 	HandlerType: (*StoreSrvServer)(nil),
@@ -295,8 +400,12 @@ var _StoreSrv_serviceDesc = grpc.ServiceDesc{
 			Handler:    _StoreSrv_StoreList_Handler,
 		},
 		{
-			MethodName: "StoreDetail",
-			Handler:    _StoreSrv_StoreDetail_Handler,
+			MethodName: "OfflineStoreDetail",
+			Handler:    _StoreSrv_OfflineStoreDetail_Handler,
+		},
+		{
+			MethodName: "OnlineStoreDetail",
+			Handler:    _StoreSrv_OnlineStoreDetail_Handler,
 		},
 		{
 			MethodName: "FuzzySearchStore",
@@ -313,6 +422,14 @@ var _StoreSrv_serviceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "DeleteStore",
 			Handler:    _StoreSrv_DeleteStore_Handler,
+		},
+		{
+			MethodName: "StoreImageList",
+			Handler:    _StoreSrv_StoreImageList_Handler,
+		},
+		{
+			MethodName: "StoreVideoList",
+			Handler:    _StoreSrv_StoreVideoList_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

@@ -23,15 +23,16 @@ var _ = math.Inf
 const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
 type StoreListReq struct {
-	DealerId             int64    `protobuf:"varint,1,opt,name=dealer_id,json=dealerId,proto3" json:"dealer_id,omitempty"`
-	BrandId              int64    `protobuf:"varint,2,opt,name=brand_id,json=brandId,proto3" json:"brand_id,omitempty"`
-	CityCode             int64    `protobuf:"varint,3,opt,name=city_code,json=cityCode,proto3" json:"city_code,omitempty"`
-	DistrictId           int64    `protobuf:"varint,4,opt,name=district_id,json=districtId,proto3" json:"district_id,omitempty"`
-	Location             string   `protobuf:"bytes,5,opt,name=location,proto3" json:"location,omitempty"`
-	TagId                int64    `protobuf:"varint,6,opt,name=tag_id,json=tagId,proto3" json:"tag_id,omitempty"`
-	Order                int32    `protobuf:"varint,7,opt,name=order,proto3" json:"order,omitempty"`
-	Page                 int32    `protobuf:"varint,8,opt,name=page,proto3" json:"page,omitempty"`
-	PageSize             int32    `protobuf:"varint,9,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
+	Type                 int32    `protobuf:"varint,1,opt,name=type,proto3" json:"type,omitempty"`
+	DealerId             int32    `protobuf:"varint,2,opt,name=dealer_id,json=dealerId,proto3" json:"dealer_id,omitempty"`
+	BrandId              int32    `protobuf:"varint,3,opt,name=brand_id,json=brandId,proto3" json:"brand_id,omitempty"`
+	CityCode             int32    `protobuf:"varint,4,opt,name=city_code,json=cityCode,proto3" json:"city_code,omitempty"`
+	DistrictId           int32    `protobuf:"varint,5,opt,name=district_id,json=districtId,proto3" json:"district_id,omitempty"`
+	Location             string   `protobuf:"bytes,6,opt,name=location,proto3" json:"location,omitempty"`
+	TagId                int32    `protobuf:"varint,7,opt,name=tag_id,json=tagId,proto3" json:"tag_id,omitempty"`
+	Order                int32    `protobuf:"varint,8,opt,name=order,proto3" json:"order,omitempty"`
+	Page                 int32    `protobuf:"varint,9,opt,name=page,proto3" json:"page,omitempty"`
+	PageSize             int32    `protobuf:"varint,10,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -70,28 +71,35 @@ func (m *StoreListReq) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_StoreListReq proto.InternalMessageInfo
 
-func (m *StoreListReq) GetDealerId() int64 {
+func (m *StoreListReq) GetType() int32 {
+	if m != nil {
+		return m.Type
+	}
+	return 0
+}
+
+func (m *StoreListReq) GetDealerId() int32 {
 	if m != nil {
 		return m.DealerId
 	}
 	return 0
 }
 
-func (m *StoreListReq) GetBrandId() int64 {
+func (m *StoreListReq) GetBrandId() int32 {
 	if m != nil {
 		return m.BrandId
 	}
 	return 0
 }
 
-func (m *StoreListReq) GetCityCode() int64 {
+func (m *StoreListReq) GetCityCode() int32 {
 	if m != nil {
 		return m.CityCode
 	}
 	return 0
 }
 
-func (m *StoreListReq) GetDistrictId() int64 {
+func (m *StoreListReq) GetDistrictId() int32 {
 	if m != nil {
 		return m.DistrictId
 	}
@@ -105,7 +113,7 @@ func (m *StoreListReq) GetLocation() string {
 	return ""
 }
 
-func (m *StoreListReq) GetTagId() int64 {
+func (m *StoreListReq) GetTagId() int32 {
 	if m != nil {
 		return m.TagId
 	}
@@ -134,8 +142,7 @@ func (m *StoreListReq) GetPageSize() int32 {
 }
 
 type StoreDetailReq struct {
-	StoreId              int64    `protobuf:"varint,1,opt,name=store_id,json=storeId,proto3" json:"store_id,omitempty"`
-	Location             string   `protobuf:"bytes,2,opt,name=location,proto3" json:"location,omitempty"`
+	StoreId              int32    `protobuf:"varint,1,opt,name=store_id,json=storeId,proto3" json:"store_id,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -174,26 +181,18 @@ func (m *StoreDetailReq) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_StoreDetailReq proto.InternalMessageInfo
 
-func (m *StoreDetailReq) GetStoreId() int64 {
+func (m *StoreDetailReq) GetStoreId() int32 {
 	if m != nil {
 		return m.StoreId
 	}
 	return 0
 }
 
-func (m *StoreDetailReq) GetLocation() string {
-	if m != nil {
-		return m.Location
-	}
-	return ""
-}
-
 type FuzzySearchStoreReq struct {
 	Query                string   `protobuf:"bytes,1,opt,name=query,proto3" json:"query,omitempty"`
-	IsHighlight          int32    `protobuf:"varint,2,opt,name=isHighlight,proto3" json:"isHighlight,omitempty"`
-	Order                int32    `protobuf:"varint,3,opt,name=order,proto3" json:"order,omitempty"`
-	Page                 int32    `protobuf:"varint,4,opt,name=page,proto3" json:"page,omitempty"`
-	PageSize             int32    `protobuf:"varint,5,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
+	Order                int32    `protobuf:"varint,2,opt,name=order,proto3" json:"order,omitempty"`
+	Page                 int32    `protobuf:"varint,3,opt,name=page,proto3" json:"page,omitempty"`
+	PageSize             int32    `protobuf:"varint,4,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -239,13 +238,6 @@ func (m *FuzzySearchStoreReq) GetQuery() string {
 	return ""
 }
 
-func (m *FuzzySearchStoreReq) GetIsHighlight() int32 {
-	if m != nil {
-		return m.IsHighlight
-	}
-	return 0
-}
-
 func (m *FuzzySearchStoreReq) GetOrder() int32 {
 	if m != nil {
 		return m.Order
@@ -268,7 +260,7 @@ func (m *FuzzySearchStoreReq) GetPageSize() int32 {
 }
 
 type EditStoreReq struct {
-	Id                   int64    `protobuf:"varint,1,opt,name=Id,proto3" json:"Id,omitempty"`
+	Id                   int32    `protobuf:"varint,1,opt,name=Id,proto3" json:"Id,omitempty"`
 	Title                string   `protobuf:"bytes,2,opt,name=title,proto3" json:"title,omitempty"`
 	Type                 int32    `protobuf:"varint,3,opt,name=type,proto3" json:"type,omitempty"`
 	Level                int32    `protobuf:"varint,4,opt,name=level,proto3" json:"level,omitempty"`
@@ -278,16 +270,16 @@ type EditStoreReq struct {
 	BrandIds             string   `protobuf:"bytes,8,opt,name=brand_ids,json=brandIds,proto3" json:"brand_ids,omitempty"`
 	DealerIds            string   `protobuf:"bytes,9,opt,name=dealer_ids,json=dealerIds,proto3" json:"dealer_ids,omitempty"`
 	GaodeId              string   `protobuf:"bytes,10,opt,name=gaode_id,json=gaodeId,proto3" json:"gaode_id,omitempty"`
-	ProvinceCode         int64    `protobuf:"varint,11,opt,name=province_code,json=provinceCode,proto3" json:"province_code,omitempty"`
-	CityCode             int64    `protobuf:"varint,12,opt,name=city_code,json=cityCode,proto3" json:"city_code,omitempty"`
-	AreaCode             int64    `protobuf:"varint,13,opt,name=area_code,json=areaCode,proto3" json:"area_code,omitempty"`
+	ProvinceCode         int32    `protobuf:"varint,11,opt,name=province_code,json=provinceCode,proto3" json:"province_code,omitempty"`
+	CityCode             int32    `protobuf:"varint,12,opt,name=city_code,json=cityCode,proto3" json:"city_code,omitempty"`
+	AreaCode             int32    `protobuf:"varint,13,opt,name=area_code,json=areaCode,proto3" json:"area_code,omitempty"`
 	Source               int32    `protobuf:"varint,14,opt,name=source,proto3" json:"source,omitempty"`
 	TagIds               string   `protobuf:"bytes,15,opt,name=tag_ids,json=tagIds,proto3" json:"tag_ids,omitempty"`
 	Address              string   `protobuf:"bytes,16,opt,name=address,proto3" json:"address,omitempty"`
 	Tel                  string   `protobuf:"bytes,17,opt,name=tel,proto3" json:"tel,omitempty"`
 	Gcj_02               string   `protobuf:"bytes,18,opt,name=gcj_02,json=gcj02,proto3" json:"gcj_02,omitempty"`
 	Location             string   `protobuf:"bytes,19,opt,name=location,proto3" json:"location,omitempty"`
-	DistrictId           int64    `protobuf:"varint,20,opt,name=district_id,json=districtId,proto3" json:"district_id,omitempty"`
+	DistrictId           int32    `protobuf:"varint,20,opt,name=district_id,json=districtId,proto3" json:"district_id,omitempty"`
 	Wechat               string   `protobuf:"bytes,21,opt,name=wechat,proto3" json:"wechat,omitempty"`
 	Introduction         string   `protobuf:"bytes,23,opt,name=introduction,proto3" json:"introduction,omitempty"`
 	BrandNames           string   `protobuf:"bytes,24,opt,name=brand_names,json=brandNames,proto3" json:"brand_names,omitempty"`
@@ -333,7 +325,7 @@ func (m *EditStoreReq) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_EditStoreReq proto.InternalMessageInfo
 
-func (m *EditStoreReq) GetId() int64 {
+func (m *EditStoreReq) GetId() int32 {
 	if m != nil {
 		return m.Id
 	}
@@ -403,21 +395,21 @@ func (m *EditStoreReq) GetGaodeId() string {
 	return ""
 }
 
-func (m *EditStoreReq) GetProvinceCode() int64 {
+func (m *EditStoreReq) GetProvinceCode() int32 {
 	if m != nil {
 		return m.ProvinceCode
 	}
 	return 0
 }
 
-func (m *EditStoreReq) GetCityCode() int64 {
+func (m *EditStoreReq) GetCityCode() int32 {
 	if m != nil {
 		return m.CityCode
 	}
 	return 0
 }
 
-func (m *EditStoreReq) GetAreaCode() int64 {
+func (m *EditStoreReq) GetAreaCode() int32 {
 	if m != nil {
 		return m.AreaCode
 	}
@@ -466,7 +458,7 @@ func (m *EditStoreReq) GetLocation() string {
 	return ""
 }
 
-func (m *EditStoreReq) GetDistrictId() int64 {
+func (m *EditStoreReq) GetDistrictId() int32 {
 	if m != nil {
 		return m.DistrictId
 	}
@@ -523,7 +515,7 @@ func (m *EditStoreReq) GetBusinessTime() string {
 }
 
 type DeleteStoreReq struct {
-	StoreId              int64    `protobuf:"varint,1,opt,name=store_id,json=storeId,proto3" json:"store_id,omitempty"`
+	StoreId              int32    `protobuf:"varint,1,opt,name=store_id,json=storeId,proto3" json:"store_id,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -562,7 +554,7 @@ func (m *DeleteStoreReq) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_DeleteStoreReq proto.InternalMessageInfo
 
-func (m *DeleteStoreReq) GetStoreId() int64 {
+func (m *DeleteStoreReq) GetStoreId() int32 {
 	if m != nil {
 		return m.StoreId
 	}
@@ -580,51 +572,49 @@ func init() {
 func init() { proto.RegisterFile("request.proto", fileDescriptor_7f73548e33e655fe) }
 
 var fileDescriptor_7f73548e33e655fe = []byte{
-	// 694 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x74, 0x54, 0xcd, 0x6e, 0x1a, 0x49,
-	0x10, 0xde, 0x01, 0x0f, 0x30, 0x65, 0xcc, 0x7a, 0xdb, 0xd8, 0x6e, 0xec, 0x5d, 0x16, 0xb1, 0x17,
-	0x4b, 0x2b, 0x21, 0xdb, 0xfb, 0x06, 0x1b, 0xe7, 0x07, 0x29, 0xca, 0x61, 0x9c, 0x53, 0x2e, 0x68,
-	0xdc, 0x5d, 0x1a, 0xda, 0x1a, 0x18, 0xdc, 0xdd, 0x10, 0xc1, 0x73, 0xe4, 0x90, 0x47, 0xca, 0x31,
-	0x8f, 0x10, 0x91, 0xf7, 0x88, 0xa2, 0xae, 0x9e, 0xc1, 0x81, 0xc4, 0x27, 0xfa, 0xfb, 0x8a, 0xaa,
-	0xae, 0xaf, 0xea, 0xeb, 0x81, 0x03, 0x8d, 0x0f, 0x73, 0x34, 0x76, 0x30, 0xd3, 0xb9, 0xcd, 0x59,
-	0xe7, 0x6e, 0x6e, 0xd4, 0x14, 0x8d, 0x19, 0x18, 0xd4, 0x0b, 0x25, 0x70, 0x60, 0x6c, 0xae, 0x71,
-	0xb0, 0xb8, 0xea, 0x7f, 0x0b, 0xa0, 0x79, 0xeb, 0xc0, 0x6b, 0x65, 0x6c, 0x8c, 0x0f, 0xec, 0x1c,
-	0x22, 0x89, 0x49, 0x86, 0x7a, 0xa4, 0x24, 0x0f, 0x7a, 0xc1, 0x45, 0x35, 0x6e, 0x78, 0x62, 0x28,
-	0x59, 0x07, 0x1a, 0x77, 0x3a, 0x99, 0x4a, 0x17, 0xab, 0x50, 0xac, 0x4e, 0x78, 0x28, 0x5d, 0x9e,
-	0x50, 0x76, 0x39, 0x12, 0xb9, 0x44, 0x5e, 0xf5, 0x79, 0x8e, 0x78, 0x96, 0x4b, 0x64, 0x7f, 0xc3,
-	0xbe, 0x54, 0xc6, 0x6a, 0x25, 0xac, 0x4b, 0xdd, 0xa3, 0x30, 0x94, 0xd4, 0x50, 0xb2, 0x33, 0x68,
-	0x64, 0xb9, 0x48, 0xac, 0xca, 0xa7, 0x3c, 0xec, 0x05, 0x17, 0x51, 0xbc, 0xc1, 0xec, 0x18, 0x6a,
-	0x36, 0x49, 0x5d, 0x5e, 0x8d, 0xf2, 0x42, 0x9b, 0xa4, 0x43, 0xc9, 0xda, 0x10, 0xe6, 0x5a, 0xa2,
-	0xe6, 0xf5, 0x5e, 0x70, 0x11, 0xc6, 0x1e, 0x30, 0x06, 0x7b, 0xb3, 0x24, 0x45, 0xde, 0x20, 0x92,
-	0xce, 0xae, 0x35, 0xf7, 0x3b, 0x32, 0x6a, 0x85, 0x3c, 0xa2, 0x40, 0xc3, 0x11, 0xb7, 0x6a, 0x85,
-	0xfd, 0x97, 0xd0, 0x22, 0xfd, 0x37, 0x68, 0x13, 0x95, 0xb9, 0x09, 0x74, 0xa0, 0x41, 0xe3, 0x79,
-	0x1c, 0x40, 0x9d, 0xf0, 0x4e, 0x9b, 0x95, 0xed, 0x36, 0xfb, 0x1f, 0x02, 0x38, 0x7a, 0x31, 0x5f,
-	0xad, 0x96, 0xb7, 0x98, 0x68, 0x31, 0xa6, 0xa2, 0xae, 0x5c, 0x1b, 0xc2, 0x87, 0x39, 0xea, 0x25,
-	0xd5, 0x8a, 0x62, 0x0f, 0x58, 0x0f, 0xf6, 0x95, 0x79, 0xa5, 0xd2, 0x71, 0xa6, 0xd2, 0xb1, 0xa5,
-	0x62, 0x61, 0xfc, 0x23, 0xf5, 0xa8, 0xaf, 0xfa, 0x2b, 0x7d, 0x7b, 0x4f, 0xe9, 0x0b, 0x77, 0xf4,
-	0xad, 0x43, 0x68, 0x3e, 0x97, 0xca, 0x6e, 0xfa, 0x69, 0x41, 0x65, 0x58, 0x0a, 0xab, 0xf8, 0x39,
-	0x5a, 0x65, 0x33, 0x2c, 0x04, 0x79, 0xe0, 0xee, 0xb1, 0xcb, 0x19, 0x16, 0x97, 0xd3, 0xd9, 0xfd,
-	0x33, 0xc3, 0x05, 0x66, 0xc5, 0xe5, 0x1e, 0x38, 0x56, 0xe4, 0x0b, 0xd4, 0xc5, 0xde, 0x3c, 0x60,
-	0x27, 0x50, 0x53, 0x93, 0x24, 0x45, 0x43, 0x4b, 0x8b, 0xe2, 0x02, 0x39, 0x7e, 0xa1, 0x24, 0xe6,
-	0x86, 0xd6, 0x16, 0xc5, 0x05, 0x72, 0x1a, 0x4a, 0x67, 0x19, 0x5a, 0x5e, 0x14, 0x37, 0x0a, 0x6b,
-	0x19, 0xf6, 0x17, 0xc0, 0xc6, 0x93, 0x86, 0x36, 0x18, 0xc5, 0x51, 0x69, 0x4a, 0xe3, 0x16, 0x96,
-	0x26, 0xb9, 0xa4, 0x85, 0x01, 0x05, 0xeb, 0x84, 0x87, 0x92, 0xfd, 0x03, 0x07, 0x33, 0x9d, 0x2f,
-	0xd4, 0x54, 0xa0, 0x77, 0xe6, 0x3e, 0xe9, 0x6e, 0x96, 0x24, 0xb9, 0x73, 0xcb, 0xba, 0xcd, 0x1d,
-	0xeb, 0x9e, 0x43, 0x94, 0x68, 0x4c, 0x7c, 0xf0, 0xc0, 0x07, 0x1d, 0x41, 0xc1, 0x13, 0xa8, 0x99,
-	0x7c, 0xae, 0x05, 0xf2, 0x16, 0x8d, 0xa4, 0x40, 0xec, 0x14, 0xea, 0xde, 0xb2, 0x86, 0xff, 0xee,
-	0x65, 0x92, 0x67, 0x0d, 0xe3, 0x50, 0x4f, 0xa4, 0xd4, 0x68, 0x0c, 0x3f, 0xf4, 0x9d, 0x16, 0x90,
-	0x1d, 0x42, 0xd5, 0x62, 0xc6, 0xff, 0x20, 0xd6, 0x1d, 0x9d, 0xef, 0x53, 0x71, 0x3f, 0xba, 0xbc,
-	0xe6, 0xcc, 0x4f, 0x36, 0x15, 0xf7, 0x97, 0xd7, 0x5b, 0x1e, 0x3c, 0xda, 0x79, 0x2a, 0x3b, 0xef,
-	0xac, 0xfd, 0xd3, 0x3b, 0x3b, 0x81, 0xda, 0x7b, 0x14, 0xe3, 0xc4, 0xf2, 0x63, 0xdf, 0x97, 0x47,
-	0xac, 0x0f, 0x4d, 0x35, 0xb5, 0x3a, 0x97, 0x73, 0x41, 0x85, 0x4f, 0x29, 0xba, 0xc5, 0xb9, 0xe2,
-	0x7e, 0x45, 0xd3, 0x64, 0x82, 0x86, 0x73, 0xfa, 0x0b, 0x10, 0xf5, 0xc6, 0x31, 0x34, 0x0d, 0xbb,
-	0xcc, 0xd0, 0xf0, 0x8e, 0x2f, 0xee, 0x91, 0xeb, 0x78, 0xe6, 0xcb, 0x18, 0x7e, 0xe6, 0x3b, 0x2e,
-	0xb1, 0x2b, 0x3a, 0xd3, 0x4a, 0xe0, 0x48, 0xa2, 0x11, 0x86, 0x9f, 0xfb, 0xa2, 0x44, 0xdd, 0x38,
-	0xc6, 0x6d, 0xb0, 0xfc, 0x7a, 0x8d, 0xac, 0x9a, 0x20, 0xff, 0xd3, 0xb7, 0x56, 0x92, 0x6f, 0xd5,
-	0x04, 0xfb, 0xff, 0x42, 0xeb, 0x06, 0x33, 0xb4, 0xb8, 0x71, 0xf9, 0xd3, 0x8f, 0xf8, 0xff, 0xf6,
-	0xa7, 0x75, 0x37, 0xf8, 0xbc, 0xee, 0x06, 0x5f, 0xd6, 0xdd, 0xe0, 0xe3, 0xd7, 0xee, 0x6f, 0xef,
-	0x2a, 0x8b, 0xab, 0xbb, 0x1a, 0x7d, 0x2a, 0xff, 0xfb, 0x1e, 0x00, 0x00, 0xff, 0xff, 0x76, 0x79,
-	0x94, 0x67, 0x3b, 0x05, 0x00, 0x00,
+	// 672 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x74, 0x54, 0xcf, 0x6e, 0x13, 0x3f,
+	0x10, 0xfe, 0x25, 0x69, 0xfe, 0xec, 0x34, 0xed, 0xaf, 0xb8, 0x69, 0xeb, 0xb4, 0x10, 0xaa, 0x70,
+	0xa9, 0x84, 0x14, 0xb5, 0xe5, 0x0d, 0xa0, 0x20, 0x45, 0x42, 0x1c, 0xb6, 0x9c, 0xb8, 0x44, 0xae,
+	0x3d, 0x4a, 0x5d, 0x6d, 0xe2, 0xd4, 0x76, 0x16, 0x25, 0x8f, 0xc1, 0x89, 0x47, 0xe2, 0xc8, 0x23,
+	0xa0, 0xf0, 0x22, 0xc8, 0xe3, 0xdd, 0x40, 0x03, 0x3d, 0xad, 0xbf, 0x6f, 0x76, 0xc6, 0x9f, 0x67,
+	0x3e, 0x1b, 0x76, 0x2c, 0xde, 0xcf, 0xd1, 0xf9, 0xc1, 0xcc, 0x1a, 0x6f, 0x58, 0xf7, 0x66, 0xee,
+	0xf4, 0x14, 0x9d, 0x1b, 0x38, 0xb4, 0xb9, 0x96, 0x38, 0x70, 0xde, 0x58, 0x1c, 0xe4, 0x17, 0xfd,
+	0x2f, 0x55, 0x68, 0x5f, 0x07, 0xf0, 0x5e, 0x3b, 0x9f, 0xe2, 0x3d, 0x63, 0xb0, 0xe5, 0x17, 0x33,
+	0xe4, 0x95, 0xd3, 0xca, 0x59, 0x3d, 0xa5, 0x35, 0x3b, 0x81, 0x44, 0xa1, 0xc8, 0xd0, 0x8e, 0xb4,
+	0xe2, 0x55, 0x0a, 0xb4, 0x22, 0x31, 0x54, 0xac, 0x0b, 0xad, 0x1b, 0x2b, 0xa6, 0x2a, 0xc4, 0x6a,
+	0x14, 0x6b, 0x12, 0x1e, 0xaa, 0x90, 0x27, 0xb5, 0x5f, 0x8c, 0xa4, 0x51, 0xc8, 0xb7, 0x62, 0x5e,
+	0x20, 0xde, 0x18, 0x85, 0xec, 0x39, 0x6c, 0x2b, 0xed, 0xbc, 0xd5, 0xd2, 0x87, 0xd4, 0x3a, 0x85,
+	0xa1, 0xa4, 0x86, 0x8a, 0x1d, 0x43, 0x2b, 0x33, 0x52, 0x78, 0x6d, 0xa6, 0xbc, 0x71, 0x5a, 0x39,
+	0x4b, 0xd2, 0x35, 0x66, 0x07, 0xd0, 0xf0, 0x62, 0x1c, 0xf2, 0x9a, 0x94, 0x57, 0xf7, 0x62, 0x3c,
+	0x54, 0xac, 0x03, 0x75, 0x63, 0x15, 0x5a, 0xde, 0x8a, 0x2c, 0x81, 0x70, 0xa4, 0x99, 0x18, 0x23,
+	0x4f, 0xe2, 0x91, 0xc2, 0x3a, 0x48, 0x0b, 0xdf, 0x91, 0xd3, 0x4b, 0xe4, 0x10, 0xa5, 0x05, 0xe2,
+	0x5a, 0x2f, 0xb1, 0xff, 0x12, 0x76, 0xa9, 0x27, 0x57, 0xe8, 0x85, 0xce, 0x42, 0x57, 0xba, 0xd0,
+	0xa2, 0x96, 0x85, 0x1d, 0x63, 0x67, 0x9a, 0x84, 0x87, 0xaa, 0x6f, 0x61, 0xff, 0xdd, 0x7c, 0xb9,
+	0x5c, 0x5c, 0xa3, 0xb0, 0xf2, 0x96, 0xf2, 0x42, 0x46, 0x07, 0xea, 0xf7, 0x73, 0xb4, 0x0b, 0xfa,
+	0x3d, 0x49, 0x23, 0xf8, 0x2d, 0xb0, 0xfa, 0x2f, 0x81, 0xb5, 0xc7, 0x04, 0x6e, 0x6d, 0x08, 0x5c,
+	0xd5, 0xa1, 0xfd, 0x56, 0x69, 0xbf, 0xde, 0x6d, 0x17, 0xaa, 0xc3, 0x52, 0x59, 0x35, 0x36, 0xc2,
+	0x6b, 0x9f, 0x21, 0xed, 0x93, 0xa4, 0x11, 0xac, 0x67, 0x5b, 0xfb, 0x63, 0xb6, 0x1d, 0xa8, 0x67,
+	0x98, 0x63, 0x56, 0xec, 0x11, 0x41, 0x60, 0xa5, 0xc9, 0xd1, 0xd2, 0x58, 0x92, 0x34, 0x02, 0x76,
+	0x08, 0x0d, 0x3d, 0x11, 0x63, 0x74, 0xc5, 0x3c, 0x0a, 0x14, 0xf8, 0x5c, 0x2b, 0x34, 0x8e, 0xa6,
+	0x91, 0xa4, 0x05, 0x0a, 0x67, 0x28, 0xad, 0xe1, 0x68, 0x24, 0x49, 0xda, 0x2a, 0xbc, 0xe1, 0xd8,
+	0x33, 0x80, 0xb5, 0xa9, 0x1c, 0xcd, 0x26, 0x49, 0x93, 0xd2, 0x55, 0x2e, 0x74, 0x7c, 0x2c, 0x8c,
+	0xa2, 0x8e, 0x03, 0x05, 0x9b, 0x84, 0x87, 0x8a, 0xbd, 0x80, 0x9d, 0x99, 0x35, 0xb9, 0x9e, 0x4a,
+	0x8c, 0xd6, 0xda, 0x26, 0xe9, 0xed, 0x92, 0x24, 0x7b, 0x3d, 0xf0, 0x5e, 0x7b, 0xc3, 0x7b, 0x27,
+	0x90, 0x08, 0x8b, 0x22, 0x06, 0x77, 0x62, 0x30, 0x10, 0x14, 0x3c, 0x84, 0x86, 0x33, 0x73, 0x2b,
+	0x91, 0xef, 0x52, 0xa4, 0x40, 0xec, 0x08, 0x9a, 0xd1, 0x73, 0x8e, 0xff, 0x1f, 0x8f, 0x49, 0xa6,
+	0x73, 0x8c, 0x43, 0x53, 0x28, 0x65, 0xd1, 0x39, 0xbe, 0x17, 0x95, 0x16, 0x90, 0xed, 0x41, 0xcd,
+	0x63, 0xc6, 0x9f, 0x10, 0x1b, 0x96, 0xc1, 0xb8, 0x63, 0x79, 0x37, 0x3a, 0xbf, 0xe4, 0x2c, 0x76,
+	0x76, 0x2c, 0xef, 0xce, 0x2f, 0x1f, 0x78, 0x7d, 0x7f, 0xc3, 0xeb, 0x1b, 0x17, 0xa5, 0xf3, 0xd7,
+	0x45, 0x39, 0x84, 0xc6, 0x67, 0x94, 0xb7, 0xc2, 0xf3, 0x83, 0xa8, 0x2b, 0x22, 0xd6, 0x87, 0xb6,
+	0x9e, 0x7a, 0x6b, 0xd4, 0x5c, 0x52, 0xe1, 0x23, 0x8a, 0x3e, 0xe0, 0x42, 0xf1, 0x38, 0xa2, 0xa9,
+	0x98, 0xa0, 0xe3, 0x9c, 0x7e, 0x01, 0xa2, 0x3e, 0x04, 0x86, 0xba, 0xe1, 0x17, 0x19, 0x3a, 0xde,
+	0x8d, 0xc5, 0x23, 0x0a, 0x8a, 0x67, 0xb1, 0x8c, 0xe3, 0xc7, 0x51, 0x71, 0x89, 0x43, 0xd1, 0x99,
+	0xd5, 0x12, 0x47, 0x0a, 0x9d, 0x74, 0xfc, 0x24, 0x16, 0x25, 0xea, 0x2a, 0x30, 0x61, 0x82, 0xe5,
+	0x93, 0x34, 0xf2, 0x7a, 0x82, 0xfc, 0x69, 0x94, 0x56, 0x92, 0x1f, 0xf5, 0x84, 0x6e, 0xe1, 0x15,
+	0x66, 0xe8, 0x71, 0xed, 0xf2, 0xc7, 0x6f, 0xe1, 0xeb, 0xce, 0xb7, 0x55, 0xaf, 0xf2, 0x7d, 0xd5,
+	0xab, 0xfc, 0x58, 0xf5, 0x2a, 0x5f, 0x7f, 0xf6, 0xfe, 0xfb, 0x54, 0xcd, 0x2f, 0x6e, 0x1a, 0xf4,
+	0xfe, 0xbd, 0xfa, 0x15, 0x00, 0x00, 0xff, 0xff, 0x51, 0x86, 0xb6, 0x4a, 0x10, 0x05, 0x00, 0x00,
 }
 
 func (m *StoreListReq) Marshal() (dAtA []byte, err error) {
@@ -654,47 +644,52 @@ func (m *StoreListReq) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	if m.PageSize != 0 {
 		i = encodeVarintRequest(dAtA, i, uint64(m.PageSize))
 		i--
-		dAtA[i] = 0x48
+		dAtA[i] = 0x50
 	}
 	if m.Page != 0 {
 		i = encodeVarintRequest(dAtA, i, uint64(m.Page))
 		i--
-		dAtA[i] = 0x40
+		dAtA[i] = 0x48
 	}
 	if m.Order != 0 {
 		i = encodeVarintRequest(dAtA, i, uint64(m.Order))
 		i--
-		dAtA[i] = 0x38
+		dAtA[i] = 0x40
 	}
 	if m.TagId != 0 {
 		i = encodeVarintRequest(dAtA, i, uint64(m.TagId))
 		i--
-		dAtA[i] = 0x30
+		dAtA[i] = 0x38
 	}
 	if len(m.Location) > 0 {
 		i -= len(m.Location)
 		copy(dAtA[i:], m.Location)
 		i = encodeVarintRequest(dAtA, i, uint64(len(m.Location)))
 		i--
-		dAtA[i] = 0x2a
+		dAtA[i] = 0x32
 	}
 	if m.DistrictId != 0 {
 		i = encodeVarintRequest(dAtA, i, uint64(m.DistrictId))
 		i--
-		dAtA[i] = 0x20
+		dAtA[i] = 0x28
 	}
 	if m.CityCode != 0 {
 		i = encodeVarintRequest(dAtA, i, uint64(m.CityCode))
 		i--
-		dAtA[i] = 0x18
+		dAtA[i] = 0x20
 	}
 	if m.BrandId != 0 {
 		i = encodeVarintRequest(dAtA, i, uint64(m.BrandId))
 		i--
-		dAtA[i] = 0x10
+		dAtA[i] = 0x18
 	}
 	if m.DealerId != 0 {
 		i = encodeVarintRequest(dAtA, i, uint64(m.DealerId))
+		i--
+		dAtA[i] = 0x10
+	}
+	if m.Type != 0 {
+		i = encodeVarintRequest(dAtA, i, uint64(m.Type))
 		i--
 		dAtA[i] = 0x8
 	}
@@ -724,13 +719,6 @@ func (m *StoreDetailReq) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	if m.XXX_unrecognized != nil {
 		i -= len(m.XXX_unrecognized)
 		copy(dAtA[i:], m.XXX_unrecognized)
-	}
-	if len(m.Location) > 0 {
-		i -= len(m.Location)
-		copy(dAtA[i:], m.Location)
-		i = encodeVarintRequest(dAtA, i, uint64(len(m.Location)))
-		i--
-		dAtA[i] = 0x12
 	}
 	if m.StoreId != 0 {
 		i = encodeVarintRequest(dAtA, i, uint64(m.StoreId))
@@ -767,20 +755,15 @@ func (m *FuzzySearchStoreReq) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	if m.PageSize != 0 {
 		i = encodeVarintRequest(dAtA, i, uint64(m.PageSize))
 		i--
-		dAtA[i] = 0x28
+		dAtA[i] = 0x20
 	}
 	if m.Page != 0 {
 		i = encodeVarintRequest(dAtA, i, uint64(m.Page))
 		i--
-		dAtA[i] = 0x20
+		dAtA[i] = 0x18
 	}
 	if m.Order != 0 {
 		i = encodeVarintRequest(dAtA, i, uint64(m.Order))
-		i--
-		dAtA[i] = 0x18
-	}
-	if m.IsHighlight != 0 {
-		i = encodeVarintRequest(dAtA, i, uint64(m.IsHighlight))
 		i--
 		dAtA[i] = 0x10
 	}
@@ -1067,6 +1050,9 @@ func (m *StoreListReq) Size() (n int) {
 	}
 	var l int
 	_ = l
+	if m.Type != 0 {
+		n += 1 + sovRequest(uint64(m.Type))
+	}
 	if m.DealerId != 0 {
 		n += 1 + sovRequest(uint64(m.DealerId))
 	}
@@ -1110,10 +1096,6 @@ func (m *StoreDetailReq) Size() (n int) {
 	if m.StoreId != 0 {
 		n += 1 + sovRequest(uint64(m.StoreId))
 	}
-	l = len(m.Location)
-	if l > 0 {
-		n += 1 + l + sovRequest(uint64(l))
-	}
 	if m.XXX_unrecognized != nil {
 		n += len(m.XXX_unrecognized)
 	}
@@ -1129,9 +1111,6 @@ func (m *FuzzySearchStoreReq) Size() (n int) {
 	l = len(m.Query)
 	if l > 0 {
 		n += 1 + l + sovRequest(uint64(l))
-	}
-	if m.IsHighlight != 0 {
-		n += 1 + sovRequest(uint64(m.IsHighlight))
 	}
 	if m.Order != 0 {
 		n += 1 + sovRequest(uint64(m.Order))
@@ -1312,6 +1291,25 @@ func (m *StoreListReq) Unmarshal(dAtA []byte) error {
 		switch fieldNum {
 		case 1:
 			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Type", wireType)
+			}
+			m.Type = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowRequest
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.Type |= int32(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+		case 2:
+			if wireType != 0 {
 				return fmt.Errorf("proto: wrong wireType = %d for field DealerId", wireType)
 			}
 			m.DealerId = 0
@@ -1324,12 +1322,12 @@ func (m *StoreListReq) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				m.DealerId |= int64(b&0x7F) << shift
+				m.DealerId |= int32(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
 			}
-		case 2:
+		case 3:
 			if wireType != 0 {
 				return fmt.Errorf("proto: wrong wireType = %d for field BrandId", wireType)
 			}
@@ -1343,12 +1341,12 @@ func (m *StoreListReq) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				m.BrandId |= int64(b&0x7F) << shift
+				m.BrandId |= int32(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
 			}
-		case 3:
+		case 4:
 			if wireType != 0 {
 				return fmt.Errorf("proto: wrong wireType = %d for field CityCode", wireType)
 			}
@@ -1362,12 +1360,12 @@ func (m *StoreListReq) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				m.CityCode |= int64(b&0x7F) << shift
+				m.CityCode |= int32(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
 			}
-		case 4:
+		case 5:
 			if wireType != 0 {
 				return fmt.Errorf("proto: wrong wireType = %d for field DistrictId", wireType)
 			}
@@ -1381,12 +1379,12 @@ func (m *StoreListReq) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				m.DistrictId |= int64(b&0x7F) << shift
+				m.DistrictId |= int32(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
 			}
-		case 5:
+		case 6:
 			if wireType != 2 {
 				return fmt.Errorf("proto: wrong wireType = %d for field Location", wireType)
 			}
@@ -1418,7 +1416,7 @@ func (m *StoreListReq) Unmarshal(dAtA []byte) error {
 			}
 			m.Location = string(dAtA[iNdEx:postIndex])
 			iNdEx = postIndex
-		case 6:
+		case 7:
 			if wireType != 0 {
 				return fmt.Errorf("proto: wrong wireType = %d for field TagId", wireType)
 			}
@@ -1432,12 +1430,12 @@ func (m *StoreListReq) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				m.TagId |= int64(b&0x7F) << shift
+				m.TagId |= int32(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
 			}
-		case 7:
+		case 8:
 			if wireType != 0 {
 				return fmt.Errorf("proto: wrong wireType = %d for field Order", wireType)
 			}
@@ -1456,7 +1454,7 @@ func (m *StoreListReq) Unmarshal(dAtA []byte) error {
 					break
 				}
 			}
-		case 8:
+		case 9:
 			if wireType != 0 {
 				return fmt.Errorf("proto: wrong wireType = %d for field Page", wireType)
 			}
@@ -1475,7 +1473,7 @@ func (m *StoreListReq) Unmarshal(dAtA []byte) error {
 					break
 				}
 			}
-		case 9:
+		case 10:
 			if wireType != 0 {
 				return fmt.Errorf("proto: wrong wireType = %d for field PageSize", wireType)
 			}
@@ -1562,43 +1560,11 @@ func (m *StoreDetailReq) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				m.StoreId |= int64(b&0x7F) << shift
+				m.StoreId |= int32(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
 			}
-		case 2:
-			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field Location", wireType)
-			}
-			var stringLen uint64
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowRequest
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				stringLen |= uint64(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			intStringLen := int(stringLen)
-			if intStringLen < 0 {
-				return ErrInvalidLengthRequest
-			}
-			postIndex := iNdEx + intStringLen
-			if postIndex < 0 {
-				return ErrInvalidLengthRequest
-			}
-			if postIndex > l {
-				return io.ErrUnexpectedEOF
-			}
-			m.Location = string(dAtA[iNdEx:postIndex])
-			iNdEx = postIndex
 		default:
 			iNdEx = preIndex
 			skippy, err := skipRequest(dAtA[iNdEx:])
@@ -1687,25 +1653,6 @@ func (m *FuzzySearchStoreReq) Unmarshal(dAtA []byte) error {
 			iNdEx = postIndex
 		case 2:
 			if wireType != 0 {
-				return fmt.Errorf("proto: wrong wireType = %d for field IsHighlight", wireType)
-			}
-			m.IsHighlight = 0
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowRequest
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				m.IsHighlight |= int32(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-		case 3:
-			if wireType != 0 {
 				return fmt.Errorf("proto: wrong wireType = %d for field Order", wireType)
 			}
 			m.Order = 0
@@ -1723,7 +1670,7 @@ func (m *FuzzySearchStoreReq) Unmarshal(dAtA []byte) error {
 					break
 				}
 			}
-		case 4:
+		case 3:
 			if wireType != 0 {
 				return fmt.Errorf("proto: wrong wireType = %d for field Page", wireType)
 			}
@@ -1742,7 +1689,7 @@ func (m *FuzzySearchStoreReq) Unmarshal(dAtA []byte) error {
 					break
 				}
 			}
-		case 5:
+		case 4:
 			if wireType != 0 {
 				return fmt.Errorf("proto: wrong wireType = %d for field PageSize", wireType)
 			}
@@ -1829,7 +1776,7 @@ func (m *EditStoreReq) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				m.Id |= int64(b&0x7F) << shift
+				m.Id |= int32(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -2110,7 +2057,7 @@ func (m *EditStoreReq) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				m.ProvinceCode |= int64(b&0x7F) << shift
+				m.ProvinceCode |= int32(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -2129,7 +2076,7 @@ func (m *EditStoreReq) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				m.CityCode |= int64(b&0x7F) << shift
+				m.CityCode |= int32(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -2148,7 +2095,7 @@ func (m *EditStoreReq) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				m.AreaCode |= int64(b&0x7F) << shift
+				m.AreaCode |= int32(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -2346,7 +2293,7 @@ func (m *EditStoreReq) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				m.DistrictId |= int64(b&0x7F) << shift
+				m.DistrictId |= int32(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -2643,7 +2590,7 @@ func (m *DeleteStoreReq) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				m.StoreId |= int64(b&0x7F) << shift
+				m.StoreId |= int32(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}

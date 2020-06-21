@@ -26,49 +26,50 @@ type Dao interface {
 	// 获取es搜索参数
 	StoreEsSearchParams(ctx context.Context, req *v1.StoreListReq) (*model.StoreEsSearchParams, error)
 	// 格式化门店
-	StoreByIds(ctx context.Context, storeIds []int64) ([]*model.Store, error)
+	StoreByIds(ctx context.Context, storeIds []int) ([]*model.Store, error)
 	// es条件搜索门店
-	StoreEsSearch(ctx context.Context, searchParams *model.StoreEsSearchParams) (*model.StoreIdsByEsResult, error)
+	StoreEsSearch(ctx context.Context, searchParams *model.StoreEsSearchParams) (int, []int, error)
+
 	// es全文搜索
-	StoreFuzzySearch(ctx context.Context, req *v1.FuzzySearchStoreReq) (*model.StoreIdsByEsResult, error)
+	StoreFuzzySearch(ctx context.Context, req *v1.FuzzySearchStoreReq) (total int, storeIds []int, err error)
 
 	// 门店详情
-	StoreDetail(ctx context.Context, storeId int64) (*model.Store, error)
+	StoreDetail(ctx context.Context, storeId int) (*model.Store, error)
 
 	// 线下门店详情
-	OfflineStoreDetail(ctx context.Context, storeId int64) (*model.OfflineStore, error)
+	OfflineStoreDetail(ctx context.Context, storeId int) (*model.OfflineStore, error)
 
 	// 线上门店详情
-	OnlineStoreDetail(ctx context.Context, storeId int64) (*model.OnlineStore, error)
+	OnlineStoreDetail(ctx context.Context, storeId int) (*model.OnlineStore, error)
 
 	// 添加门店
-	AddStore(ctx context.Context, req *v1.EditStoreReq) (int64, error)
+	AddStore(ctx context.Context, req *v1.EditStoreReq) (int, error)
 	// 编辑门店
 	EditStore(ctx context.Context, req *v1.EditStoreReq) error
 	// 删除门店
-	DeleteStore(ctx context.Context, storeId int64) error
+	DeleteStore(ctx context.Context, storeId int) error
 
 	// 获取资源列表
-	StoreResourceList(ctx context.Context, storeId,resourceType int64) ([]*model.StoreResource, error)
+	StoreResourceList(ctx context.Context, storeId,resourceType int) ([]*model.StoreResource, error)
 	// 设置门店资源
-	AddStoreResource(ctx context.Context, resource *model.StoreResource) (int64,error)
+	AddStoreResource(ctx context.Context, resource *model.StoreResource) (int,error)
 
-	AddStoreResourceImage(ctx context.Context, storeId int64, title, data string, dataInfo *model.StoreResourceImageExt) (id int64, err error)
+	AddStoreResourceImage(ctx context.Context, storeId int, title, data string, dataInfo *model.StoreResourceImageExt) (id int, err error)
 
-	AddStoreResourceVideo(ctx context.Context, storeId int64, title, data string, dataInfo *model.StoreResourceVideoExt) (id int64, err error)
+	AddStoreResourceVideo(ctx context.Context, storeId int, title, data string, dataInfo *model.StoreResourceVideoExt) (id int, err error)
 
-	StoreResourceImageList(ctx context.Context, storeId int64) (list []*model.StoreResourceImage, err error)
-	StoreResourceVideoList(ctx context.Context, storeId int64) (list []*model.StoreResourceVideo, err error)
+	StoreResourceImageList(ctx context.Context, storeId int) (list []*model.StoreResourceImage, err error)
+	StoreResourceVideoList(ctx context.Context, storeId int) (list []*model.StoreResourceVideo, err error)
 
 	// 设置门店统计
-	SetStoreCount(ctx context.Context, storeId int64, field string, count int) error
+	SetStoreCount(ctx context.Context, storeId int, field string, count int) error
 	// 获取门店统计
-	StoreCount(ctx context.Context, storeId int64) (*model.StoreCount, error)
-	AddStoreBelone(ctx context.Context, storeId int64, belongType int8, belongIds string) (err error)
+	StoreCount(ctx context.Context, storeId int) (*model.StoreCount, error)
+	AddStoreBelone(ctx context.Context, storeId int, belongType int, belongIds string) (err error)
 	// 获取门店统计
-	StoreBelone(ctx context.Context, storeId int64) ([]*model.StoreBelong, error)
+	StoreBelone(ctx context.Context, storeId int) ([]*model.StoreBelong, error)
 	// 获取门店地区
-	StoreDistrictList(ctx context.Context, storeId int64) ([]*model.StoreDistrict, error)
+	StoreDistrictList(ctx context.Context, storeId int) ([]*model.StoreDistrict, error)
 
 }
 
@@ -78,7 +79,7 @@ type dao struct {
 	redis       *redis.Redis
 	elasticSearch *es.ElasticSearch
 	cache *fanout.Fanout
-	demoExpire int32
+	demoExpire int
 }
 
 // New new a dao and return.
@@ -98,7 +99,7 @@ func newDao(r *redis.Redis, db *gorm.DB, elasticSearch *es.ElasticSearch) (d *da
 		redis: r,
 		elasticSearch: elasticSearch,
 		cache: fanout.New("cache"),
-		demoExpire: int32(time.Duration(cfg.DemoExpire) / time.Second),
+		demoExpire: int(time.Duration(cfg.DemoExpire) / time.Second),
 	}
 	cf = d.Close
 	return

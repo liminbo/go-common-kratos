@@ -5,23 +5,38 @@ syntax = "proto3";
 package business.service.store.v1;
 // package 命名使用 {appid}.{version} 的方式, version 形如 v1, v2 ..
 
-import "store/api/request.proto";
-import "store/api/response.proto";
+import "request.proto";
+import "response.proto";
 
 option go_package = "v1";
 
 service StoreSrv {
   // 线下门店列表
   rpc StoreList (StoreListReq) returns (StoreListRep);
+
   // 线下门店详情
-  rpc StoreDetail (StoreDetailReq) returns (StoreDetailRep);
+  rpc OfflineStoreDetail (StoreDetailReq) returns (OfflineStoreDetailRep);
+
+  // 线下门店详情
+  rpc OnlineStoreDetail (StoreDetailReq) returns (OnlineStoreDetailRep);
+
   // 全文检索门店
   rpc FuzzySearchStore (FuzzySearchStoreReq) returns (FuzzySearchStoreRep);
+
   // 增加门店
-  rpc AddStore (EditStoreReq) returns (EditStoreRep);
+  rpc AddStore (EditStoreReq) returns (AddStoreRep);
+
   // 编辑门店
   rpc EditStore (EditStoreReq) returns (EditStoreRep);
+
   // 删除门店
   rpc DeleteStore (DeleteStoreReq) returns (DeleteStoreRep);
+
+  // 门店图片列表
+  rpc StoreImageList (StoreDetailReq) returns (StoreImageListRep);
+
+  // 门店视频列表
+  rpc StoreVideoList (StoreDetailReq) returns (StoreVideoListRep);
+
 }
 
