@@ -27,6 +27,11 @@ func (ctx *StoreCtx) New(c context.Context, d *dao, editReq *v1.EditStoreReq,) (
 	return
 }
 
+func (ctx *StoreCtx) GetStoreId() (storeId int){
+	storeId = ctx.storeId
+	return
+}
+
 type StoreHandler interface {
 	Do(ctx *StoreCtx) error
 	setNext(h StoreHandler) StoreHandler

@@ -52,19 +52,19 @@ func (s *Service) StoreDetail(ctx context.Context, storeId int) (err error) {
 	return
 }
 
-func (s *Service) StoreList(ctx context.Context, v *v1.StoreListReq) (rep *v1.StoreListRep ,err error) {
+func (s *Service) StoreList(ctx context.Context, req *v1.StoreListReq) (rep *v1.StoreListRep ,err error) {
 	var(
 		total int
 		storeIds []int
 	)
 
-	req := &model.StoreEsSearchParams{
-		BrandId:           int(v.BrandId),
-		DealerId:          int(v.DealerId),
-		PageSize:          int(v.PageSize),
-		Page:              int(v.Page),
+	params := &model.StoreEsSearchParams{
+		BrandId:           int(req.BrandId),
+		DealerId:          int(req.DealerId),
+		PageSize:          int(req.PageSize),
+		Page:              int(req.Page),
 	}
-	if total,storeIds,err = s.dao.StoreEsSearch(ctx, req); err != nil{
+	if total,storeIds,err = s.dao.StoreEsSearch(ctx, params); err != nil{
 		return
 	}
 
@@ -84,27 +84,192 @@ func (s *Service) StoreList(ctx context.Context, v *v1.StoreListReq) (rep *v1.St
 	rep = &v1.StoreListRep{
 		Store:                stores,
 		Page:&v1.Page{
-			Page:                 v.Page,
-			PageSize:             v.PageSize,
+			Page:                 req.Page,
+			PageSize:             req.PageSize,
 			RecordCount:          int32(total),
 		},
 	}
 	return
 }
 
-func (s *Service) StoreFuzzySearch(ctx context.Context) (err error) {
-	req := &v1.FuzzySearchStoreReq{
-		Query:                "索菲亚",
-		Order:                0,
-		Page:                 1,
-		PageSize:             20,
-	}
+func (s *Service) StoreFuzzySearch(ctx context.Context, req *v1.FuzzySearchStoreReq) (rep *v1.FuzzySearchStoreRep, err error) {
 	total,storeIds,err := s.dao.StoreFuzzySearch(ctx, req)
-	//storeList,err := s.dao.StoreByIds(ctx, storeIds)
-	log.Info("total:%s  ids:%v  err:%v", total, storeIds, err)
-	//for _, value := range storeList{
-	//	log.Info("store data: %v", value.Title)
-	//}
+	log.Info("fuzzy search storeIds:%v", storeIds)
+
+	stores := make([]*v1.Store, 0, len(storeIds))
+	storeList,_ := s.dao.StoreByIds(ctx, storeIds)
+
+	for _, value := range storeList{
+		_store := &v1.Store{
+			Id:                   int32(value.ID),
+			Title:                value.Title,
+			Type:                 int32(value.Type),
+			Level:                int32(value.Level),
+			Cover:                value.Cover,
+		}
+		stores = append(stores, _store)
+	}
+	rep = &v1.FuzzySearchStoreRep{
+		Store:                stores,
+		Page:&v1.Page{
+			Page:                 req.Page,
+			PageSize:             req.PageSize,
+			RecordCount:          int32(total),
+		},
+	}
+
+	return
+}
+
+func (s *Service) DeleteStore(ctx context.Context, storeId int) (err error) {
+	err = s.dao.DeleteStore(ctx, storeId)
+	return
+}
+
+func (s *Service) StoreImageList(ctx context.Context, storeId int) (rep *v1.StoreImageListRep, err error) {
+	rep = new(v1.StoreImageListRep)
+
+	list,err := s.dao.StoreResourceImageList(ctx, storeId)
+	images := make([]*v1.ResourceImage, 0, len(list))
+
+	for _,val := range list{
+		image := &v1.ResourceImage{
+			Title:                val.Title,
+			Data:                 val.Data,
+			Ext:                  &v1.ResourceImage_Ext{
+				W:                    int32(val.StoreResourceImageExt.W),
+				H:                    int32(val.StoreResourceImageExt.H),
+			},
+		}
+		images = append(images, image)
+	}
+
+	rep.Image = images
+	return
+}
+
+func (s *Service) StoreVideoList(ctx context.Context, storeId int) (rep *v1.StoreVideoListRep, err error) {
+	rep = new(v1.StoreVideoListRep)
+
+	list,err := s.dao.StoreResourceVideoList(ctx, storeId)
+	videoes := make([]*v1.ResourceVideo, 0, len(list))
+
+	for _,val := range list{
+		video := &v1.ResourceVideo{
+			Title:                val.Title,
+			Data:                 val.Data,
+			Ext:                  &v1.ResourceVideo_Ext{
+				W:                    int32(val.W),
+				H:                    int32(val.H),
+				Mime:                 val.Mime,
+				Cover:                &v1.ResourceVideo_Cover{
+					W:                    int32(val.Cover.W),
+					H:                    int32(val.Cover.H),
+					Url:                  val.Cover.Url,
+				},
+			},
+		}
+		videoes = append(videoes, video)
+	}
+
+	rep.Video = videoes
+	return
+}
+
+func (s *Service) OfflineStoreDetail(ctx context.Context, storeId int) (rep *v1.OfflineStoreDetailRep, err error) {
+	var(
+		detail *model.OfflineStore
+	)
+	rep = new(v1.OfflineStoreDetailRep)
+
+	if detail,err = s.dao.OfflineStoreDetail(ctx, storeId);err != nil{
+		return
+	}
+	offlineStore := &v1.OfflineStore{
+		Id:                   int32(detail.ID),
+		Title:                detail.Title,
+		Type:                 int32(detail.Type),
+		Level:                int32(detail.Level),
+		Cover:                detail.Cover,
+		ProvinceName:         detail.ProvinceName,
+		CityName:             detail.CityName,
+		AreaName:             detail.AreaName,
+		ProvinceCode:         int32(detail.ProvinceCode),
+		CityCode:             int32(detail.CityCode),
+		AreaCode:             int32(detail.AreaCode),
+		Address:              detail.Address,
+		Tel:                  detail.Tel,
+		Gcj_02:               detail.Gcj02,
+		Location:             detail.Location,
+		DistrictId:           int32(detail.DistrictId),
+		Wechat:               detail.Wechat,
+		Reply:                detail.Reply,
+		Remark:               detail.Remark,
+		Styles:               detail.Styles,
+		Introduction:         detail.Introduction,
+		PriceDesc:            detail.PriceDesc,
+		BrandDesc:            detail.BrandDesc,
+		ProductsDesc:         detail.ProductsDesc,
+		BusinessTime:         detail.BusinessTime,
+		Articles:             int32(detail.Articles),
+		Evaluations:          int32(detail.Evaluations),
+		Items:                int32(detail.Items),
+		RealClicks:           int32(detail.RealClicks),
+		Clicks:               int32(detail.Clicks),
+		Images:               int32(detail.Images),
+		Videoes:              int32(detail.Videoes),
+		CreatedAt:            0,
+	}
+
+	rep.OfflineStore = offlineStore
+	return
+}
+
+func (s *Service) OnlineStoreDetail(ctx context.Context, storeId int) (rep *v1.OnlineStoreDetailRep, err error) {
+	var(
+		detail *model.OnlineStore
+	)
+	rep = new(v1.OnlineStoreDetailRep)
+
+	if detail,err = s.dao.OnlineStoreDetail(ctx, storeId);err != nil{
+		return
+	}
+	onlineStore := &v1.OnlineStore{
+		Id:                   int32(detail.ID),
+		Title:                detail.Title,
+		Type:                 int32(detail.Type),
+		Level:                int32(detail.Level),
+		Cover:                detail.Cover,
+		ProvinceName:         detail.ProvinceName,
+		CityName:             detail.CityName,
+		AreaName:             detail.AreaName,
+		ProvinceCode:         int32(detail.ProvinceCode),
+		CityCode:             int32(detail.CityCode),
+		AreaCode:             int32(detail.AreaCode),
+		Address:              detail.Address,
+		Tel:                  detail.Tel,
+		Gcj_02:               detail.Gcj02,
+		Location:             detail.Location,
+		Wechat:               detail.Wechat,
+		Reply:                detail.Reply,
+		Remark:               detail.Remark,
+		Styles:               detail.Styles,
+		Introduction:         detail.Introduction,
+		PriceDesc:            detail.PriceDesc,
+		BrandDesc:            detail.BrandDesc,
+		ProductsDesc:         detail.ProductsDesc,
+		BusinessTime:         detail.BusinessTime,
+		Articles:             int32(detail.Articles),
+		Evaluations:          int32(detail.Evaluations),
+		Items:                int32(detail.Items),
+		RealClicks:           int32(detail.RealClicks),
+		Clicks:               int32(detail.Clicks),
+		Images:               int32(detail.Images),
+		Videoes:              int32(detail.Videoes),
+		CreatedAt:            0,
+	}
+
+	rep.OnlineStore = onlineStore
 	return
 }
 

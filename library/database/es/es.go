@@ -2,8 +2,8 @@ package es
 
 import (
 	"fmt"
-	elastic "gopkg.in/olivere/elastic.v5"
 	xtime "github.com/go-kratos/kratos/pkg/time"
+	elastic "gopkg.in/olivere/elastic.v5"
 	"time"
 )
 

@@ -10,34 +10,47 @@ func (g *grpcServer) StoreList(ctx context.Context, req *v1.StoreListReq) (rep *
 	return
 }
 
-func (g *grpcServer) OfflineStoreDetail(context.Context, *v1.StoreDetailReq) (*v1.OfflineStoreDetailRep, error) {
-	panic("implement me")
+func (g *grpcServer) OfflineStoreDetail(ctx context.Context, req *v1.StoreDetailReq) (rep *v1.OfflineStoreDetailRep, err error) {
+	rep,err = g.svr.OfflineStoreDetail(ctx, int(req.StoreId))
+	return
 }
 
-func (g *grpcServer) OnlineStoreDetail(context.Context, *v1.StoreDetailReq) (*v1.OnlineStoreDetailRep, error) {
-	panic("implement me")
+func (g *grpcServer) OnlineStoreDetail(ctx context.Context, req *v1.StoreDetailReq) (rep *v1.OnlineStoreDetailRep, err error) {
+	rep,err = g.svr.OnlineStoreDetail(ctx, int(req.StoreId))
+	return
 }
 
-func (g *grpcServer) FuzzySearchStore(context.Context, *v1.FuzzySearchStoreReq) (*v1.FuzzySearchStoreRep, error) {
-	panic("implement me")
+func (g *grpcServer) FuzzySearchStore(ctx context.Context, req *v1.FuzzySearchStoreReq) (rep *v1.FuzzySearchStoreRep, err error) {
+	rep,err = g.svr.StoreFuzzySearch(ctx, req)
+	return
 }
 
-func (g *grpcServer) AddStore(context.Context, *v1.EditStoreReq) (*v1.AddStoreRep, error) {
-	panic("implement me")
+func (g *grpcServer) AddStore(ctx context.Context, req *v1.EditStoreReq) (rep *v1.AddStoreRep, err error) {
+	storeId,err := g.svr.AddStore(ctx, req)
+
+	rep = new(v1.AddStoreRep)
+	rep.StoreId = int32(storeId)
+	return
 }
 
-func (g *grpcServer) EditStore(context.Context, *v1.EditStoreReq) (*v1.EditStoreRep, error) {
-	panic("implement me")
+func (g *grpcServer) EditStore(ctx context.Context, req *v1.EditStoreReq) (rep *v1.EditStoreRep, err error) {
+	rep = new(v1.EditStoreRep)
+	err = g.svr.EditStore(ctx, req)
+	return
 }
 
-func (g *grpcServer) DeleteStore(context.Context, *v1.DeleteStoreReq) (*v1.DeleteStoreRep, error) {
-	panic("implement me")
+func (g *grpcServer) DeleteStore(ctx context.Context, req *v1.DeleteStoreReq) (rep *v1.DeleteStoreRep, err error) {
+	rep = new(v1.DeleteStoreRep)
+	err = g.svr.DeleteStore(ctx, int(req.StoreId))
+	return
 }
 
-func (g *grpcServer) StoreImageList(context.Context, *v1.StoreDetailReq) (*v1.StoreImageListRep, error) {
-	panic("implement me")
+func (g *grpcServer) StoreImageList(ctx context.Context, req *v1.StoreDetailReq) (rep *v1.StoreImageListRep, err error) {
+	rep,err = g.svr.StoreImageList(ctx, int(req.StoreId))
+	return
 }
 
-func (g *grpcServer) StoreVideoList(context.Context, *v1.StoreDetailReq) (*v1.StoreVideoListRep, error) {
-	panic("implement me")
+func (g *grpcServer) StoreVideoList(ctx context.Context, req *v1.StoreDetailReq) (rep *v1.StoreVideoListRep, err error) {
+	rep,err = g.svr.StoreVideoList(ctx, int(req.StoreId))
+	return
 }

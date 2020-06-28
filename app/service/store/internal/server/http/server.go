@@ -151,7 +151,7 @@ func test(ctx *bm.Context) {
 
 func list(ctx *bm.Context) {
 	//_ = svr.OfflineStoreList(ctx)
-	_ = svr.StoreFuzzySearch(ctx)
+	//_ = svr.StoreFuzzySearch(ctx)
 	ctx.String(200, "FuzzySearch success")
 }
 

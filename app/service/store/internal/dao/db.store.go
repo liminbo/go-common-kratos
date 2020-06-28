@@ -15,6 +15,8 @@ package dao
 
 import (
 	"context"
+	"errors"
+	"fmt"
 	"github.com/go-kratos/kratos/pkg/log"
 	v1 "go-common/app/service/store/api"
 	"go-common/app/service/store/internal/model"
@@ -52,6 +54,7 @@ func (d *dao) OfflineStoreDetail(ctx context.Context, storeId int) (offlineStore
 	}
 	if store.Type != model.STORE_TYPE_OFFLINE{
 		log.Warn("store no offline id:%v", storeId)
+		err = errors.New(fmt.Sprintf("store no offline id:%v", storeId))
 		return
 	}
 	offlineStore = new(model.OfflineStore)
@@ -66,9 +69,11 @@ func (d *dao) OnlineStoreDetail(ctx context.Context, storeId int) (onlineStore *
 
 	if store,err = d.StoreDetail(ctx, storeId);err != nil{
 		log.Error("db error:%v", err)
+		return
 	}
 	if store.Type != model.STORE_TYPE_ONLINE{
 		log.Warn("store no online id:%v", storeId)
+		err = errors.New(fmt.Sprintf("store no online id:%v", storeId))
 		return
 	}
 
@@ -98,6 +103,8 @@ func (d *dao) AddStore(ctx context.Context, req *v1.EditStoreReq) (storeId int, 
 	if err := nilHandle.Run(storeCtx); err !=nil{
 		log.Error("ERROR: %v", err)
 	}
+
+	storeId = storeCtx.GetStoreId()
 	return
 }
 
